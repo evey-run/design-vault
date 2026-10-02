@@ -132,3 +132,27 @@ a.ext{color:var(--mut);font-size:12px}
   .tile.open{grid-template-columns:1fr}
   .estrip img{width:50%}
 }
+
+/* --- barre de pages --- */
+#site{display:flex;gap:3px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+#site a{font-size:12px;padding:5px 10px;border:1px solid var(--b);text-decoration:none;color:var(--mut)}
+#site a:hover{color:var(--fg);border-color:var(--fg)}
+#site a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* --- page design system --- */
+.dshead{border-bottom:1px solid var(--b);padding-bottom:10px;margin-bottom:18px}
+.dshead h1{font-size:22px;margin-bottom:4px}
+#ds section{margin-bottom:26px}
+#ds h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);
+       border-bottom:1px solid var(--b);padding-bottom:5px;margin:0 0 10px}
+#ds pre{white-space:pre-wrap;background:var(--soft);padding:10px;font-size:12px;max-height:340px;overflow:auto}
+.todo{font-size:13px;color:var(--mut);border:1px dashed var(--b);padding:8px 10px}
+.dscolors{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:8px}
+.dsc{display:flex;flex-direction:column;gap:2px;font-size:11px}
+.dsc .sq{height:46px;border:1px solid var(--b);cursor:pointer;padding:0}
+.dsc b{font-size:12px}
+.dsc span{color:var(--mut)}
+.dsc code{color:var(--mut)}
+.specimen{font-size:30px;margin:8px 0 0}
+.rules{margin:0;padding-left:18px;font-size:13px}
+.rules li{margin-bottom:4px}

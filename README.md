@@ -4,7 +4,23 @@ Ma bibliothèque personnelle pour concevoir des sites web : templates, idées d'
 
 Site : https://evey-run.github.io/design-vault/
 
-## Onglets
+## Pages
+
+| Page | Contenu |
+|---|---|
+| `index.html` | **Design Vault** — la bibliothèque (6 onglets ci-dessous) |
+| `evey.html` | Evey Design System |
+| `tribos.html` | Tribos Design System |
+| `orivo.html` | Orivo Design System |
+| `findy.html` | Findy Design System |
+
+Les quatre pages de design system partagent un même gabarit (`ds.js`) et lisent
+`data/ds.js`. Chacune a six sections — Couleurs, Typographie, Tokens, Composants,
+Prompt système, Règles — et affiche « à remplir » tant qu'un champ est vide, en
+indiquant exactement quoi éditer. Ajouter un projet : une entrée dans `data/ds.js`
+et une copie d'un des fichiers `*.html` avec le bon `DS_PROJECT`.
+
+## Onglets de Design Vault
 
 | Onglet | Contenu | Fichier |
 |---|---|---|
@@ -51,7 +67,7 @@ Chaque carte correspond à une épingle de mon tableau Pinterest, analysée et r
 - **tags à facettes** — Ton, Couleur, Effet, Composant, Domaine, Style — cumulables : cliquer `glassmorphism` puis `oled` ne garde que les éléments qui ont les deux ;
 - **palette dominante** extraite de l'image (5 couleurs, quantification médiane), chaque pastille copiable ;
 - **la vignette d'origine et sa recréation CSS côte à côte** : l'aperçu schématique est redessiné à partir de la palette relevée ;
-- **prompt de reproduction** détaillé (structure, valeurs, contraintes) et **CSS** copiable quand l'effet est reproductible.
+- **prompt de reproduction** détaillé : structure, valeurs en px, hex, contraintes et interdits.
 
 Deux outils en plus :
 
@@ -81,7 +97,7 @@ Champs du wireframe : `nav`, `hero`, `band`, `text`, `split`, `sidebar`, `list`,
 
 Les autres types :
 
-- **element** : `id`, `name`, `cat`, `layout` (dashboard, mobile, chart, cards, hero, split, table, kanban, map, report, mockup), `tags`, `ton`, `colors`, `desc`, `prompt`, `css`, `pin`, `src`
+- **element** : `id`, `name`, `cat`, `layout` (dashboard, mobile, chart, cards, hero, split, table, kanban, map, report, mockup), `tags`, `ton`, `colors`, `desc`, `prompt`, `img`, `pin`, `src`
 - **idea** : `name`, `category`, `tags`, `desc`, `demo` (HTML inline affiché en live), `code`, `prompt`, `url`
 - **palette** : `name`, `mood`, `colors` (tableau de hex), `tags`, `desc`, `usage`
 - **prompt** : `name`, `use`, `tags`, `desc`, `body`

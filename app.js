@@ -196,10 +196,8 @@ function cardGallery(e){
     +   tags(e.tags)
     +   links(e, 'galerie')
     +   '<div class="row">'+copyBtn(e.prompt,'Copier le prompt')
-    +     (e.css?copyBtn(e.css,'Copier le CSS'):'')
     +     '<button class="copy'+(inMix?' on':'')+'" data-mix="'+esc(e.id)+'">'+(inMix?'− Panier':'+ Panier')+'</button></div>'
     +   block('Prompt de reproduction', e.prompt)
-    +   (e.css?block('CSS', e.css):'')
     +   '<p class="mut">'+link(e.pin,'épingle')+(e.src?' · '+link(e.src,'source'):'')+'</p>'
     + '</div></article>';
 }
@@ -237,11 +235,9 @@ function cardElement(e){
     + links(e, 'elements')
     + '<div class="row">'
     +   copyBtn(e.prompt,'Copier le prompt')
-    +   (e.css?copyBtn(e.css,'Copier le CSS'):'')
     +   '<button class="copy'+(inMix?' on':'')+'" data-mix="'+esc(e.id)+'">'+(inMix?'− Panier':'+ Panier')+'</button>'
     + '</div>'
     + block('Prompt de reproduction', e.prompt)
-    + (e.css?block('CSS', e.css):'')
     + '<p class="mut">'+link(e.pin,'épingle')+(e.src?' · '+link(e.src,'source'):'')+'</p>'
     + '</article>';
 }

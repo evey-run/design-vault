@@ -26,8 +26,7 @@ DATA.elements = [
   "desc": "Trois écrans iPhone sombres posés sur un fond lavande uni : carte de solde en dégradé pastel, liste de transactions avec icônes de marque, écran analytics à barres.",
   "prompt": "Conçois une app mobile de finances personnelles, 3 écrans. Fond d'écran de présentation lavande uni (#A9A6E8). Interface sombre #121214, cartes #1C1C20, rayon 20px. Écran 1 : carte de solde en dégradé pastel (lavande vers rose pâle), montant en 32px semi-bold, 3 boutons ronds Envoyer/Recevoir/Recharger en dessous, puis liste des transactions récentes (icône de marque carrée 36px, libellé, catégorie en gris, montant à droite en rouge ou vert). Écran 2 : feuille modale d'ajout de dépense, montant géant centré, champs Catégorie/Date/Description, deux boutons ronds annuler et valider. Écran 3 : analytics, sélecteur de période en segmented control, histogramme hebdomadaire avec barre active surlignée en violet et bulle de valeur, puis grille 2 colonnes de catégories avec montant. Pas d'ombre portée, séparation par bordures #26262C.",
   "pin": "https://www.pinterest.com/pin/711779916154712957/",
-  "img": "https://i.pinimg.com/1200x/3f/0d/ee/3f0dee21833a18248e32760ef415a5de.jpg",
-  "css": ".balance-card{background:linear-gradient(135deg,#C9C4F2 0%,#E8C9DD 100%);border-radius:20px;padding:20px;color:#1A1A20}"
+  "img": "https://i.pinimg.com/1200x/3f/0d/ee/3f0dee21833a18248e32760ef415a5de.jpg"
  },
  {
   "id": "711779916154549188",
@@ -80,8 +79,7 @@ DATA.elements = [
   "desc": "Tableau de bord sombre à accent magenta : courbe en aire remplie, donut de progression, chiffres monospace. Présenté en mockup tablette tenue en main.",
   "prompt": "Conçois un dashboard d'investissement sombre à accent magenta. Fond #0C0C0E, cartes #141416, texte #ECECEC, accent #E0218A. Bandeau du haut : valeur totale 28px avec flèche de variation verte, 4 micro-stats alignées en 11px gris. Graphique principal : courbe en aire magenta avec dégradé vers transparent, grille horizontale 1px #222, axe des mois en 10px. Carte de droite : donut de progression magenta épaisseur 10px avec pourcentage au centre, légende à puces à côté. Bandeau du bas : trois compteurs de temps en chiffres monospace 22px séparés par des barres verticales fines. Aucune ombre, séparation par bordures, interlignage serré.",
   "pin": "https://www.pinterest.com/pin/711779916154549178/",
-  "img": "https://i.pinimg.com/1200x/e9/f7/dc/e9f7dc538ece3372f096c34d2a92f229.jpg",
-  "css": ".area-fill{background:linear-gradient(180deg,rgba(224,33,138,.45),rgba(224,33,138,0))}"
+  "img": "https://i.pinimg.com/1200x/e9/f7/dc/e9f7dc538ece3372f096c34d2a92f229.jpg"
  },
  {
   "id": "711779916154549166",
@@ -109,7 +107,6 @@ DATA.elements = [
   "prompt": "Conçois une page de data-visualisation géographique, fond noir texturé béton (image de texture en overlay, opacité 20%). Au centre : carte d'un État en semis de points lumineux, chaque point en cyan #22D3EE, violet #A855F7 ou vert #4ADE80 selon la catégorie, halo (box-shadow 0 0 12px) et extrusions verticales en barres lumineuses pour les valeurs fortes. Autour : 4 panneaux translucides (#0F0F12 à 85% d'opacité, bordure #2A2A32, rayon 8px) contenant courbes multi-séries, tableau de valeurs par année avec cellules colorées, et une légende dégradée High/Medium/Low. Typo sans-serif 11px en majuscules espacées pour les titres de panneaux. Tout le reste reste noir : la lumière ne vient que des données.",
   "pin": "https://www.pinterest.com/pin/711779916154549166/",
   "img": "https://i.pinimg.com/1200x/c8/ee/1f/c8ee1ff9112f20240144de0636502274.jpg",
-  "css": ".neon-dot{background:#22D3EE;border-radius:50%;box-shadow:0 0 10px #22D3EE,0 0 22px rgba(34,211,238,.6)}",
   "src": "https://dribbble.com/georai"
  },
  {
@@ -276,7 +273,6 @@ DATA.elements = [
   "prompt": "Conçois une image de présentation de produit SaaS. Fond dégradé gris très clair (#F2F2F4 vers #E6E6EA). Derrière, le nom du produit en majuscules très grandes (120px+), en gris quasi transparent avec un léger relief, partiellement masqué par les fenêtres. Devant, deux à trois fenêtres d'application en perspective légère (rotation Y d'environ 12 degrés, ombre douce large 0 30px 60px rgba(0,0,0,.18)), décalées et superposées. L'application montre une sidebar violette #6D4AFF avec item actif en surbrillance, une liste de fichiers avec icônes de dossier colorées et avatars empilés, et un encart promotionnel en bas de sidebar avec illustration de fusée. Le tout cadré avec de la marge : le titre doit dépasser du cadre.",
   "pin": "https://www.pinterest.com/pin/711779916152455573/",
   "img": "https://i.pinimg.com/1200x/19/ab/cc/19abcce60db9e76bce894e7ff5569a16.jpg",
-  "css": ".persp{transform:perspective(1600px) rotateY(12deg) rotateX(2deg);box-shadow:0 30px 60px rgba(0,0,0,.18)}",
   "src": "https://www.instagram.com/p/DTNiyWmEo1v/"
  },
  {
@@ -305,7 +301,6 @@ DATA.elements = [
   "prompt": "Conçois un dashboard de bilan de santé en glassmorphism, posé sur une photographie de paysage au crépuscule. Panneau principal : fond rgba(10,12,20,.72), backdrop-filter blur(24px), bordure 1px rgba(255,255,255,.08), rayon 18px. Au centre : cadran circulaire géant (arc de 270 degrés, piste sombre, arc actif bleu #3B82F6 avec dégradé), grand nombre au centre en 48px et libellé Percentile dessous, et des valeurs satellites positionnées autour de l'arc avec leur libellé en 10px. À gauche : radar chart à 8 axes en bleu translucide. À droite : courbe de déclin avec zone grisée et mini graphique. En bas : trois cartes de résultats avec barres de score à dégradé vert-orange-rouge et curseur de position, listes de marqueurs avec puces colorées et valeurs de référence. Texte blanc, secondaire rgba(255,255,255,.6), aucune couleur vive hors le bleu et les barres de score.",
   "pin": "https://www.pinterest.com/pin/711779916151951570/",
   "img": "https://i.pinimg.com/1200x/2b/ed/78/2bed7870ed9dc9474c46c146058bde37.jpg",
-  "css": ".glass{background:rgba(10,12,20,.72);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.08);border-radius:18px}",
   "src": "https://fuselabcreative.com/our-projects/clyhealth-dashboard-design/"
  },
  {
@@ -361,7 +356,6 @@ DATA.elements = [
   "prompt": "Conçois un visuel de présentation pour un dashboard crypto. Fond en dégradé radial orange incandescent : halo clair #FFB347 en haut à droite se fondant vers #F25C05 puis #D63E00 dans les angles, aucune bande visible. Nom du produit et logo en blanc en haut à gauche, titre de la pièce en haut à droite sur deux lignes (le second mot en orange plus clair, semi transparent). Au centre, la capture de l'interface sombre, rayon 10px, légèrement rétrécie pour laisser respirer le fond, avec une ombre large et diffuse. Signature de l'auteur en bas à gauche en 12px blanc à 70% d'opacité. Rapport 4:3, marges généreuses.",
   "pin": "https://www.pinterest.com/pin/711779916152396597/",
   "img": "https://i.pinimg.com/1200x/8f/a2/b1/8fa2b19ea4830fb6351b2b92265c359d.jpg",
-  "css": ".glow-orange{background:radial-gradient(120% 90% at 75% 15%,#FFB347 0%,#F25C05 45%,#D63E00 100%)}",
   "src": "https://www.facebook.com/photo?fbid=876528361382979&set=pcb.876533978049084"
  },
  {
@@ -472,8 +466,7 @@ DATA.elements = [
   "desc": "Dashboard de stockage sur fond bleu nuit traversé de faisceaux lumineux : cartes translucides, barre de quota, file d'upload avec progression, liste d'équipe.",
   "prompt": "Conçois un dashboard de stockage cloud, thème bleu nuit lumineux. Fond #0C1430 avec deux faisceaux lumineux obliques (dégradés radiaux bleu #3B6BFF et violet #7B5CFF à faible opacité, flous), comme une aurore derrière l'interface. Cartes en rgba(255,255,255,.05) avec bordure rgba(255,255,255,.1), backdrop-filter blur(18px), rayon 14px. Barre du haut : titre, champ de recherche large avec raccourci clavier affiché en pill, icônes et profil utilisateur avec nom et email. Bloc d'accueil : Good morning en 13px puis prénom en 34px light. Carte de quota : volume en 40px, sélecteur de mois, barre horizontale avec segment utilisé en dégradé orange-rouge et reste en gris translucide, mention de l'espace restant. Carte Spaces : deux sous-cartes avec icône, titre, et trois compteurs Total/Used/Available alignés. Carte Uploading : lignes de fichiers avec icône de type, nom, poids, barre de progression fine et pastille d'état, puis une barre globale avec pourcentage. Carte Team : avatars ronds, nom, rôle en 11px. Carte Storage Access : lignes avec nom de projet, nombre de fichiers, poids, avatars empilés et bouton Share access en bleu plein.",
   "pin": "https://www.pinterest.com/pin/711779916152073812/",
-  "img": "https://i.pinimg.com/1200x/b6/04/95/b60495b37e80c954e1d946667a8c57d4.jpg",
-  "css": ".aurora{background:#0C1430;position:relative;overflow:hidden}\n.aurora::before{content:'';position:absolute;inset:-20%;background:radial-gradient(40% 60% at 30% 20%,rgba(59,107,255,.55),transparent 70%),radial-gradient(45% 55% at 70% 40%,rgba(123,92,255,.45),transparent 70%);filter:blur(40px)}"
+  "img": "https://i.pinimg.com/1200x/b6/04/95/b60495b37e80c954e1d946667a8c57d4.jpg"
  },
  {
   "id": "711779916151927851",
@@ -584,7 +577,6 @@ DATA.elements = [
   "prompt": "Conçois une interface de streaming vidéo en glassmorphism. Fond : photographie ou dégradé gris-bleu désaturé, puis panneau principal en rgba(255,255,255,.12) avec backdrop-filter blur(30px), bordure rgba(255,255,255,.25), rayon 18px. En haut : logo à gauche, onglets Movie/Series/Originals dans une pill sombre avec onglet actif en blanc, loupe, puis profil avec avatar, prénom et mention Premium. Deux bannières éditoriales côte à côte, rayon 14px : fond illustré, titre en serif 26px blanc sur trois lignes, bouton Let's Play Movie avec icône play entourée. Rangée de filtres : pills givrées avec icône et libellé, pill active en blanc opaque à texte sombre. Titre de section 18px puis grille de 6 affiches au ratio 2:3, rayon 10px, titre en 13px dessous, note avec étoile jaune et année en 11px gris. Boutons de tri ronds et givrés en bout de ligne.",
   "pin": "https://www.pinterest.com/pin/711779916151927837/",
   "img": "https://i.pinimg.com/1200x/50/7f/c3/507fc348a36fc4190c0f787d35fba123.jpg",
-  "css": ".frost{background:rgba(255,255,255,.12);backdrop-filter:blur(30px) saturate(140%);border:1px solid rgba(255,255,255,.25);border-radius:18px}",
   "src": "https://cdn.dribbble.com/userupload/12364362/file/original-34f1922d567a10de39810852528dcc3d.png?resize=752x"
  },
  {
@@ -668,8 +660,7 @@ DATA.elements = [
   "desc": "Photographie d'un téléphone tenu en main dans une pièce sombre, écran rempli d'un dégradé orange incandescent avec interface minimale et texte de bienvenue.",
   "prompt": "Conçois un visuel d'ambiance pour une app mobile. Photographie : main tenant un téléphone en contre-jour dans une pièce sombre aux reflets chauds, flou d'arrière-plan prononcé. Écran : dégradé incandescent du crème #FFF0D6 en haut vers l'orange #FF7A18 puis l'ambre profond #D94E0A en bas, aucune bande visible, léger grain. Interface réduite au minimum : heure et météo en petit en haut, salutation sur deux lignes en 20px blanc à 85% d'opacité au tiers supérieur, et un seul mot de marque en 10px lettres espacées en bas. Aucune carte, aucun bouton visible : l'écran est une surface de lumière.",
   "pin": "https://www.pinterest.com/pin/711779916151397488/",
-  "img": "https://i.pinimg.com/1200x/cb/e3/d8/cbe3d895c41fd3023fbba1fb0579aae4.jpg",
-  "css": ".ember{background:linear-gradient(180deg,#FFF0D6 0%,#FFB45C 35%,#FF7A18 70%,#D94E0A 100%)}"
+  "img": "https://i.pinimg.com/1200x/cb/e3/d8/cbe3d895c41fd3023fbba1fb0579aae4.jpg"
  },
  {
   "id": "711779916151397480",
@@ -751,8 +742,7 @@ DATA.elements = [
   "desc": "Landing page web3 sombre : hero avec forme lumineuse en orbite, sections techniques alternées, cubes 3D isométriques, grilles de données et dégradés violets.",
   "prompt": "Conçois une landing page de produit web3, thème violet nuit. Fond #0B0616 avec dégradés radiaux violets #6D28D9 et magenta #C026D3 très diffus derrière les sections clés. Hero : titre 48px sur deux lignes, paragraphe 15px gris #A49BC2 sur 60 caractères, deux boutons (plein violet et contour fin), et à droite une forme lumineuse en orbite (anneaux de particules violets et roses, flou et glow) autour d'un noyau clair. Bande de logos partenaires en gris à 50% d'opacité. Sections suivantes alternées texte/visuel : chaque bloc a une étiquette de section en 11px majuscules violet, un titre 28px, deux lignes de description, un lien fléché, et un visuel technique (cube 3D isométrique filaire, grille de données en monospace, schéma de flux lumineux). Section finale en grille de 3 cartes avec icône carrée violette, titre et texte. Bordures #241736 de 1px partout, aucun arrondi supérieur à 10px, typo compacte.",
   "pin": "https://www.pinterest.com/pin/711779916137608140/",
-  "img": "https://i.pinimg.com/1200x/37/a7/a7/37a7a7fe0b1165690df1f648f7235af7.jpg",
-  "css": ".orb{background:radial-gradient(circle at 50% 50%,#EDE9FE 0%,#A855F7 35%,#6D28D9 60%,transparent 72%);filter:blur(2px);box-shadow:0 0 80px rgba(168,85,247,.55)}"
+  "img": "https://i.pinimg.com/1200x/37/a7/a7/37a7a7fe0b1165690df1f648f7235af7.jpg"
  },
  {
   "id": "711779916134004618",
@@ -810,7 +800,6 @@ DATA.elements = [
   "prompt": "Conçois une landing page de produit technique, direction cinématique sombre. Fond : photographie de ciel d'orage désaturée, assombrie par un voile #0A0A0C à 55%, le produit détouré au centre en contre-plongée avec des liserés lumineux orange #FF6A00 sur ses arêtes. Titre : nom du produit en majuscules 110px, lettres très espacées, remplissage dégradé du blanc vers l'orange au centre du mot. Bouton Order circulaire blanc de 72px posé sur l'image. Cartes flottantes translucides (rgba(18,18,20,.72), bordure rgba(255,255,255,.1), rayon 10px, backdrop blur) disposées autour du produit : vignette produit secondaire avec étiquette Sale orange, compteur d'autonomie, et jauge circulaire de réserve avec arc orange, valeur 150 kW/h au centre et mention en majuscules dessous. Sous le hero, baseline en 34px sur trois lignes avec un mot souligné d'un trait orange, et une icône centrale lumineuse. Mention Supported by avec logo partenaire en gris en bas à droite.",
   "pin": "https://www.pinterest.com/pin/711779916143860016/",
   "img": "https://i.pinimg.com/1200x/bd/94/5d/bd945d1d4556b538ce910bb022102fb7.jpg",
-  "css": ".title-ember{background:linear-gradient(90deg,#FFFFFF 0%,#FF9A3C 50%,#FFFFFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}",
   "src": "https://dribbble.com/shots/23775653-Zeus-X-Website"
  },
  {
@@ -867,7 +856,6 @@ DATA.elements = [
   "prompt": "Conçois une landing page d'agence spécialisée en intelligence artificielle, thème noir minimal. Fond #0A0A0B. Navigation : logo texte à gauche, 5 liens en 11px majuscules espacées au centre, indicateur de date ou de statut à droite. Hero : surtitre en 10px majuscules dans un rectangle bleu électrique #1D4ED8, puis le mot principal en 90px, moitié des lettres en plein blanc et moitié en contour fin (text-stroke 1px, couleur transparente), la première lettre posée sur un aplat bleu. Paragraphe 12px gris #8A8A92 sur deux lignes, puis lien Let's go avec flèche. À droite, un rendu 3D chromé (buste ou forme organique) en noir brillant sur fond noir, éclairé par un seul liseré bleu. Colonne de liens verticaux en 9px à droite. Bas de page : deux colonnes Technology et Innovation avec titre 11px majuscules et texte 10px gris, numérotation de section dans les angles. Densité très faible, le vide fait le propos.",
   "pin": "https://www.pinterest.com/pin/711779916138697146/",
   "img": "https://i.pinimg.com/1200x/54/33/1d/54331d6df81f80770f71147fcd1828a4.jpg",
-  "css": ".outline-text{-webkit-text-stroke:1px #FFFFFF;color:transparent}",
   "src": "http://youtube.com/c/LiveCodeOfficiel?sub_confirmation=1"
  },
  {
@@ -950,8 +938,7 @@ DATA.elements = [
   "desc": "Interface HUD de film ou de jeu : grille de repérage, carte topographique en lignes, panneaux de télémétrie en monospace, accents rouge-orange sur noir profond.",
   "prompt": "Conçois une interface HUD de science-fiction, noir profond #050506. Zone principale : carte topographique en lignes de niveau fines #3A3A42 sur fond noir, surmontée d'une grille de repérage 1px rgba(255,255,255,.07) avec coordonnées en 8px monospace aux intersections, et d'une zone de danger en hachures diagonales rouges #E23D28 à 30% d'opacité. Réticules en coins d'angle (quatre équerres fines) autour des éléments sélectionnés. Colonne de droite : panneaux empilés séparés par des filets 1px, chaque panneau a un titre en 9px majuscules espacées, une valeur ou un cadran (arc gradué, jauge en demi-cercle, oscilloscope en ligne fine), et des étiquettes d'état en pills rouges ou grises. Bas de page : barres de niveau segmentées multicolores avec valeurs en monospace 8px. Tout en monospace, aucune image, aucun arrondi supérieur à 2px, lisibilité sacrifiée volontairement au profit de la densité.",
   "pin": "https://www.pinterest.com/pin/711779916138640604/",
-  "img": "https://i.pinimg.com/1200x/4e/3a/e9/4e3ae9c0174b6f5cca5443028356a2ea.jpg",
-  "css": ".hud-grid{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:34px 34px}\n.hud-hazard{background:repeating-linear-gradient(45deg,rgba(226,61,40,.35) 0 6px,transparent 6px 14px)}"
+  "img": "https://i.pinimg.com/1200x/4e/3a/e9/4e3ae9c0174b6f5cca5443028356a2ea.jpg"
  },
  {
   "id": "711779916136090075",
@@ -1008,7 +995,6 @@ DATA.elements = [
   "prompt": "Conçois une app de maison connectée en glassmorphism clair, trois écrans. Fond : dégradé rose #F0A6E8 vers violet #B49BF0 avec trois grosses bulles floues plus claires et plus sombres réparties derrière l'interface. Toutes les surfaces : rgba(255,255,255,.25), backdrop-filter blur(22px), bordure 1px rgba(255,255,255,.45), rayon 22px. Écran 1 : salutation en 15px et heure en 26px, titre de section Room avec lien View All, grille 2x2 de cartes de pièce (icône filaire dans un carré sombre pour la pièce active, nom en 12px, nombre d'appareils en 10px). Écran 2 : en-tête avec retour et nom de pièce, grand cadran circulaire (piste blanche translucide, arc actif violet, poignée ronde blanche) avec la température en 40px au centre, deux valeurs courantes dessous, puis trois cartes de consigne. Écran 3 : valeur de consommation en 34px, graphe en aire lissée violet translucide avec point actif, et carte de total avec jauge circulaire de pourcentage. Barre basse translucide à 4 icônes avec bouton micro rond violet au centre.",
   "pin": "https://www.pinterest.com/pin/711779916136480533/",
   "img": "https://i.pinimg.com/1200x/1c/60/13/1c6013b92731ad64a5c3e3f925f04cb0.jpg",
-  "css": ".glass-soft{background:rgba(255,255,255,.25);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.45);border-radius:22px}",
   "src": "https://www.freepik.com/free-vector/gradient-glassmorphism-mobile-app-template_28122580.htm"
  },
  {
@@ -1038,7 +1024,6 @@ DATA.elements = [
   "prompt": "Conçois un kit d'interface pour une app de sommeil, fond noir absolu #000000. Cartes rayon 14px en #0D0D10 contenant chacune un halo flou interne (radial-gradient violet #7C3AED ou magenta #D946EF, opacité 35%, blur 40px) positionné dans un angle différent selon la carte. Typographie : monospace 11px en majuscules espacées pour les libellés, sans-serif 16px pour les phrases adressées à l'utilisateur. Contenus : carte de message de bonne nuit avec phrase sur deux lignes et lien fléché, carte de cycle avec jauge circulaire fine et nom de phase, carte d'humeur avec trois pastilles rondes sélectionnables, carte de résumé en texte monospace dense, bloc horloge en gros chiffres sur deux lignes. Variante montre : quatre écrans carrés à coins très arrondis (rayon 28px) reprenant chacun un élément — logo centré, message, minuteur avec halo violet pulsé, et graphe de phase REM en ligne fine rose. Aucun blanc pur : texte en #E6E6EA.",
   "pin": "https://www.pinterest.com/pin/711779916136480541/",
   "img": "https://i.pinimg.com/1200x/a1/d6/92/a1d692f63e4d1258b92b4f7ad39ca238.jpg",
-  "css": ".halo-card{position:relative;background:#0D0D10;border-radius:14px;overflow:hidden}\n.halo-card::before{content:'';position:absolute;width:160px;height:160px;right:-30px;top:-40px;background:radial-gradient(circle,#7C3AED,transparent 70%);filter:blur(30px);opacity:.55}",
   "src": "https://dribbble.com/shots/16442360-MINDFULLY-Digital-Branding-UI-RRSS/attachments/11132240?mode=media"
  },
  {
@@ -1067,7 +1052,6 @@ DATA.elements = [
   "prompt": "Conçois un jeu d'icônes d'applications en glassmorphism sombre, sur fond noir bleuté #06080E. Chaque icône : squircle de 72px en rgba(255,255,255,.04), bordure 1px rgba(255,255,255,.08), backdrop-filter blur(14px). Le logo de l'application est placé derrière la surface de verre, flouté (blur 6px) et désaturé, de sorte que seule sa couleur transparaisse en lueur diffuse, avec un glow coloré (box-shadow interne et externe de la teinte du logo à 35%). Une seule partie du logo reste nette pour l'identification. Lumière cohérente : légère réflexion en haut à gauche de chaque squircle, ombre portée très douce en bas. Grille 3x3 régulière, espacement égal, aucune étiquette de texte.",
   "pin": "https://www.pinterest.com/pin/711779916137623546/",
   "img": "https://i.pinimg.com/1200x/72/76/94/727694d23c290c6f0a7914bbb707e62c.jpg",
-  "css": ".icon-dark-glass{background:rgba(255,255,255,.04);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 8px 24px rgba(0,0,0,.6)}",
   "src": "https://www.behance.net/gallery/154913017/Matte-icons"
  },
  {
@@ -1095,7 +1079,6 @@ DATA.elements = [
   "prompt": "Conçois un jeu d'icônes d'applications en verre givré clair, sur fond bleu très pâle #EAF0FB. Chaque icône : squircle de 76px en rgba(255,255,255,.55), bordure 1px rgba(255,255,255,.8), backdrop-filter blur(16px) saturate(160%), ombre douce 0 10px 24px rgba(40,60,120,.12). Le logo coloré est placé derrière la surface : net au centre, de plus en plus flou et diffus vers les bords, ses couleurs débordant en halo pastel sous le verre. Même angle de lumière pour toutes : reflet blanc en haut à gauche, retombée plus froide en bas à droite. Grille régulière 4 colonnes, espacement constant, aucune étiquette.",
   "pin": "https://www.pinterest.com/pin/711779916137444202/",
   "img": "https://i.pinimg.com/1200x/ff/43/53/ff43534f0cb6d56a5395d133fa57c8b1.jpg",
-  "css": ".icon-frost{background:rgba(255,255,255,.55);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.8);border-radius:24px;box-shadow:0 10px 24px rgba(40,60,120,.12)}",
   "src": "https://dribbble.com/armkum5"
  },
  {
@@ -1405,7 +1388,6 @@ DATA.elements = [
   "prompt": "Conçois le hero d'un site d'agence créative, fond noir #0D0D0D. À droite : une statue antique photographiée et traitée en monochrome rouge #E03131, détourée, posée devant un grand disque rouge plein qui dépasse du cadre. À gauche : surtitre Our version en 10px majuscules espacées gris, titre d'un seul mot en 40px majuscules blanc, deux lignes de description en 12px gris #9A9A9A, puis un bouton rond de 44px à contour fin contenant une flèche, suivi du libellé See More en 11px. Navigation en haut : logo carré rouge, trois liens en 11px majuscules. En bas : pagination 01 — 03 avec un trait horizontal de progression. Le visuel occupe la moitié droite exactement, le texte reste dans le tiers gauche, le reste est du vide noir.",
   "pin": "https://www.pinterest.com/pin/711779916134123323/",
   "img": "https://i.pinimg.com/1200x/44/49/3d/44493dda088ecc4f4f103ce1940a2338.jpg",
-  "css": ".disc{background:#E03131;border-radius:50%;aspect-ratio:1}",
   "src": "https://marcelodesignx.com/"
  },
  {
@@ -1629,8 +1611,7 @@ DATA.elements = [
   "desc": "Habillage d'interface cyberpunk : panneaux translucides violets empilés, listes techniques, blocs de code colorés, portrait génératif et particules bleues.",
   "prompt": "Conçois un habillage d'interface cyberpunk, fond #0A0618 avec un voile de particules bleues et violettes. Panneaux : rgba(30,16,60,.55), bordure 1px #6D28D9 à 40% d'opacité, rayon 4px seulement, avec une barre de titre de 14px portant des losanges décoratifs aux extrémités. Disposition en mosaïque dense : un grand panneau d'image (portrait traité, teinté violet, avec effet de scanlines horizontales très fines), des panneaux de liste à puces carrées en 9px monospace, un panneau de profil avec avatar hexagonal, et un grand panneau d'éditeur de code avec coloration syntaxique violette, verte et bleue sur fond presque noir. Typographie monospace partout, 9 à 11px, en violet clair #C4B5FD pour le texte courant et blanc pour les valeurs. Détails : numéros de ligne, barres de progression segmentées, petites croix et chevrons dans les angles de chaque panneau. Aucune image photographique hors le portrait, aucun arrondi.",
   "pin": "https://www.pinterest.com/pin/711779916138640054/",
-  "img": "https://i.pinimg.com/1200x/fb/cf/4f/fbcf4f77c179dd071b815ca8ab926f0a.jpg",
-  "css": ".scanlines{background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0 1px,transparent 1px 3px)}"
+  "img": "https://i.pinimg.com/1200x/fb/cf/4f/fbcf4f77c179dd071b815ca8ab926f0a.jpg"
  },
  {
   "id": "711779916132969402",
@@ -1746,7 +1727,6 @@ DATA.elements = [
   "prompt": "Conçois une carte de statistiques présentée comme une affiche. Fond : papier gris clair #EDEDEB avec un très léger grain. Carte : rectangle noir #0A0A0A, rayon 28px, padding 28px, ombre portée très douce. Titre Consumption en 22px blanc à gauche, et à droite une légende avec pastille ronde blanche et libellé 12px gris. Histogramme : sept paires de barres (une claire #AFD8FF et une sombre #2A2A2A par jour), largeur 14px, extrémités arrondies (border-radius 7px), hauteurs variables, alignées sur une ligne de base fine #333. Étiquettes des jours en 12px sous la ligne de base, le jour actif en blanc et en gras, les autres en gris. Autour de la carte, uniquement des mentions en 9px majuscules espacées dans les angles de l'affiche : catégorie en haut à gauche, thème en haut à droite, signature en bas à gauche, invitation en bas à droite. Rien d'autre sur la page : la carte flotte dans le vide.",
   "pin": "https://www.pinterest.com/pin/711779916155436625/",
   "img": "https://i.pinimg.com/1200x/76/2c/fd/762cfd573bcc214fb7742a3b07c5bbbb.jpg",
-  "css": ".bar{background:linear-gradient(180deg,#CFE7FF,#7FB7F0);border-radius:7px}",
   "src": "https://www.instagram.com/p/DOS-tJxAfkG/"
  },
  {
@@ -1883,8 +1863,7 @@ DATA.elements = [
   "desc": "Jeu de widgets très arrondis sur fond sombre : chaque carte a son dégradé (vert, bleu, magenta, violet), une grosse valeur et une barre de progression.",
   "prompt": "Conçois un jeu de widgets de suivi sportif pour écran sombre. Fond #121216. Chaque widget : rayon 28px, padding 20px, fond en dégradé diagonal partant d'une couleur saturée vers un ton très sombre de la même teinte (vert #4ADE80 vers #0F2A17, bleu #38BDF8 vers #0A1B2A, magenta #E935C1 vers #2A0A24, violet #7C3AED vers #1A1030). Structure interne constante : titre en 17px blanc en haut à gauche, éventuellement une icône ronde translucide à droite, un libellé secondaire en 11px majuscules espacées, la valeur principale en 34px bold avec son unité en 15px à côté, et le libellé de la valeur en 12px à 70% d'opacité. Barres de progression : hauteur 6px, piste en blanc à 15%, remplissage en dégradé clair, extrémités arrondies. Un widget large occupe deux colonnes et aligne trois valeurs côte à côte. Un widget affiche une progression en barres verticales segmentées plutôt qu'en barre continue. Aucune bordure, aucune ombre : la couleur suffit à séparer les blocs.",
   "pin": "https://www.pinterest.com/pin/711779916155053243/",
-  "img": "https://i.pinimg.com/1200x/ad/39/6b/ad396bb02e16195932199d44d05c10d5.jpg",
-  "css": ".w-green{background:linear-gradient(135deg,#4ADE80,#0F2A17);border-radius:28px}\n.w-magenta{background:linear-gradient(135deg,#E935C1,#2A0A24);border-radius:28px}"
+  "img": "https://i.pinimg.com/1200x/ad/39/6b/ad396bb02e16195932199d44d05c10d5.jpg"
  },
  {
   "id": "711779916155053236",
@@ -2166,7 +2145,6 @@ DATA.elements = [
   "prompt": "Conçois une colonne de navigation latérale pour application SaaS sombre, largeur 250px. Fond #141418, bordure droite 1px #232329. En haut : logo carré avec nom du produit en 14px, puis champ de recherche en #1C1C22 rayon 8px avec icône loupe et raccourci clavier affiché en deux touches grises à droite. Groupe principal : liens en 13px avec icône filaire 16px, espacement vertical de 6px, item actif en pill violette #5B4BE8 pleine largeur avec texte blanc, les autres en gris #9A9AA5 passant au blanc au survol. Titre de groupe Other en 10px majuscules espacées gris foncé, suivi d'un second groupe de liens. En bas, deux blocs fixes : une carte d'upsell rayon 10px avec bordure #262630, titre avec icône d'étincelle, deux lignes d'explication en 11px gris et bouton plein violet pleine largeur ; puis une ligne de profil avec avatar rond, nom en 12px, email tronqué en 10px gris et chevron de menu. Séparateurs : filets 1px #1F1F26 pleine largeur entre les groupes.",
   "pin": "https://www.pinterest.com/pin/711779916147859609/",
   "img": "https://i.pinimg.com/1200x/d9/75/70/d9757033806a5464b0baa40c81eb52da.jpg",
-  "css": ".nav-item.active{background:#5B4BE8;color:#fff;border-radius:8px}\n.kbd{border:1px solid #2B2B33;border-radius:4px;padding:1px 5px;font-size:10px;color:#8A8A95}",
   "src": "https://x.com/home"
  },
  {
@@ -2250,8 +2228,7 @@ DATA.elements = [
   "desc": "Tableau kanban en glassmorphism sombre posé sur une photographie de côte : colonnes translucides, cartes floutées, bouton d'assistant flottant.",
   "prompt": "Conçois un tableau kanban en glassmorphism sombre, posé sur une photographie de paysage côtier au crépuscule. Panneau principal : rgba(14,14,16,.6), backdrop-filter blur(30px) saturate(120%), bordure 1px rgba(255,255,255,.07), rayon 14px, occupant 85% de la largeur. Barre du haut : champ de recherche translucide, boutons Import en contour fin et New en pill blanche à texte noir. En-tête : titre de section en 18px suivi d'une bascule Board / List en segmented control translucide. Colonnes : titre en 12px avec compteur en pastille, cartes en rgba(255,255,255,.06) rayon 10px contenant un avatar à initiales coloré, un nom en 12px, un horodatage en 10px gris à droite, deux lignes d'adresse en 10px gris et une ligne de métadonnées séparée par des points. Une carte porte une pastille Just now en rouge. Bouton Add new en bas de chaque colonne en 11px gris avec une croix. Barre d'icônes verticale à gauche, très étroite, en icônes filaires. Bouton flottant d'assistant en bas à droite : pill sombre opaque avec icône d'étincelle et libellé en 12px. Les colonnes les plus à droite deviennent progressivement plus transparentes pour suggérer le défilement.",
   "pin": "https://www.pinterest.com/pin/711779916147665746/",
-  "img": "https://i.pinimg.com/1200x/e0/76/5b/e0765bc5434ffcfea03893f923703825.jpg",
-  "css": ".glass-dark{background:rgba(14,14,16,.6);backdrop-filter:blur(30px) saturate(120%);border:1px solid rgba(255,255,255,.07);border-radius:14px}"
+  "img": "https://i.pinimg.com/1200x/e0/76/5b/e0765bc5434ffcfea03893f923703825.jpg"
  },
  {
   "id": "711779916146156512",

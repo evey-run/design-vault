@@ -40,7 +40,7 @@ Le point d'entrée visuel : les 82 images du tableau en vignettes. Les images so
 affichées depuis le CDN de Pinterest (`i.pinimg.com`), aucune n'est copiée dans le repo.
 
 Un clic sur une vignette l'ouvre en grand avec, à côté, tout ce qui a été produit à
-partir d'elle — description, palette relevée, tags, prompt de reproduction, CSS —
+partir d'elle — description, palette relevée, tags, prompt de reproduction —
 et une rangée de **liens croisés** :
 
 | Lien | Où il mène |

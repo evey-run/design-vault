@@ -10,24 +10,28 @@
 
 <header>
   <h1>Design Vault</h1>
-  <p class="mut">Mes templates, idées d'UI, palettes, prompts et design systems. Tout au même endroit, visuel, réutilisable.</p>
+  <p class="mut">Templates, éléments graphiques, idées d'UI, palettes, prompts et design systems. Tout au même endroit, visuel, filtrable, réutilisable.</p>
 </header>
 
 <nav id="tabs"></nav>
 
 <div id="bar">
-  <input id="q" type="search" placeholder="Rechercher (nom, tag, texte)…" autocomplete="off">
+  <input id="q" type="search" placeholder="Rechercher…  (touche /)" autocomplete="off">
   <span id="count" class="mut"></span>
   <span id="filter"></span>
 </div>
 
 <main id="view"></main>
 
+<div id="mix" hidden></div>
+
 <footer class="mut">
   <p>Ajouter / modifier : éditer les fichiers dans <code>data/</code>. Voir <code>README.md</code>.</p>
 </footer>
 
+<script src="data/taxonomy.js"></script>
 <script src="data/templates.js"></script>
+<script src="data/elements.js"></script>
 <script src="data/ideas.js"></script>
 <script src="data/palettes.js"></script>
 <script src="data/prompts.js"></script>

@@ -68,3 +68,37 @@ details pre{white-space:pre-wrap;word-break:break-word;background:var(--soft);pa
 .dots span{width:20px;height:20px;border:1px solid var(--b)}
 
 footer{margin-top:28px;border-top:1px solid var(--b);padding-top:8px}
+
+/* --- filtres actifs --- */
+#filter{display:flex;gap:4px;flex-wrap:wrap}
+.chipf{font:inherit;font-size:12px;border:1px solid var(--b);background:var(--soft);color:var(--fg);cursor:pointer;padding:3px 7px}
+.chipf.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tag.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tag small{opacity:.55;margin-left:4px;font-size:10px}
+
+/* --- facettes --- */
+#facets{border:1px solid var(--b);padding:8px;margin-bottom:12px;display:flex;flex-direction:column;gap:6px}
+.facet{display:flex;flex-wrap:wrap;gap:4px;align-items:baseline}
+.fname{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);width:76px;flex:none}
+
+/* --- cartes éléments --- */
+.mock{height:120px;padding:6px;border:1px solid var(--b);margin-bottom:8px;overflow:hidden}
+.mock > div{height:100%}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
+.star{font:inherit;font-size:14px;line-height:1;border:0;background:none;color:var(--mut);cursor:pointer;padding:0}
+.star.on{color:var(--fg)}
+.sw.sm{height:16px;margin-bottom:6px}
+.sw.sm .chip{flex:1;border:0;padding:0;cursor:pointer}
+.copy.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+a.ext{color:var(--mut);font-size:12px}
+
+/* --- panier de prompts --- */
+#mix{position:sticky;bottom:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+     border:1px solid var(--b);background:var(--bg);padding:8px;margin-top:16px;font-size:13px}
+#mix[hidden]{display:none}
+
+@media (max-width:620px){
+  .fname{width:100%}
+  #mix{position:static}
+}
+.more{font:inherit;font-size:11px;border:1px dashed var(--b);background:none;color:var(--mut);cursor:pointer;padding:1px 6px}

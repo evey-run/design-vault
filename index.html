@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design Vault</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Design Vault</h1>
+  <p class="mut">Mes templates, idées d'UI, palettes, prompts et design systems. Tout au même endroit, visuel, réutilisable.</p>
+</header>
+
+<nav id="tabs"></nav>
+
+<div id="bar">
+  <input id="q" type="search" placeholder="Rechercher (nom, tag, texte)…" autocomplete="off">
+  <span id="count" class="mut"></span>
+  <span id="filter"></span>
+</div>
+
+<main id="view"></main>
+
+<footer class="mut">
+  <p>Ajouter / modifier : éditer les fichiers dans <code>data/</code>. Voir <code>README.md</code>.</p>
+</footer>
+
+<script src="data/templates.js"></script>
+<script src="data/ideas.js"></script>
+<script src="data/palettes.js"></script>
+<script src="data/prompts.js"></script>
+<script src="data/systems.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

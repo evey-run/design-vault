@@ -71,3 +71,10 @@ Ouvrir `index.html` directement dans le navigateur (double-clic). Les données s
 ## Pile
 
 HTML + CSS + JavaScript vanilla. Zéro dépendance, zéro build, déployé par GitHub Pages depuis `main`.
+
+## Cache
+
+Les fichiers sont référencés avec `?v=N` dans `index.html`. GitHub Pages met les
+assets en cache 10 minutes : après une modification de `app.js`, `style.css` ou
+d'un fichier `data/`, incrémenter ce numéro pour que la nouvelle version soit
+servie immédiatement.

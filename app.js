@@ -2,14 +2,18 @@
 
 var COPY = [];            // textes copiables de la vue courante
 var state = {
-  tab: 'templates',
+  tab: 'galerie',
   q: '',
   tags: [],               // filtres cumulés (ET)
   open: {},               // facettes dépliées
+  cat: null,              // catégorie sélectionnée
+  focus: null,            // {tab, key} : une seule fiche affichée
+  sel: null,              // vignette ouverte dans la galerie
   favOnly: false
 };
 
 var SECTIONS = [
+  { id:'galerie',   label:'Galerie',        get:function(){return DATA.elements},  card:cardGallery, facets:true, grid:'gal' },
   { id:'templates', label:'Templates',      get:function(){return DATA.templates}, card:cardTemplate },
   { id:'elements',  label:'Éléments',       get:function(){return DATA.elements},  card:cardElement, facets:true },
   { id:'ideas',     label:'Idées / UI',     get:function(){return DATA.ideas},     card:cardIdea },
@@ -119,7 +123,88 @@ function mock(layout, cs, ton){
   return '<div class="mock" style="background:'+bg+'">'+inner+'</div>';
 }
 
+/* ---------- rapprochements entre onglets ---------- */
+function rgb(h){ return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]; }
+function dist(a,b){ var x=rgb(a), y=rgb(b);
+  return Math.sqrt(Math.pow(x[0]-y[0],2)+Math.pow(x[1]-y[1],2)+Math.pow(x[2]-y[2],2)); }
+
+/* palette de l'onglet Couleurs la plus proche des teintes relevées sur l'image */
+function nearestPalette(cs){
+  var best=null, bs=1e9;
+  (DATA.palettes||[]).forEach(function(p){
+    var s=0;
+    cs.forEach(function(c){ var m=1e9; p.colors.forEach(function(d){ var v=dist(c,d); if(v<m) m=v; }); s+=m; });
+    s /= cs.length;
+    if (s<bs){ bs=s; best=p; }
+  });
+  return best ? { p:best, d:Math.round(bs) } : null;
+}
+
+/* entrées d'un autre onglet qui partagent des tags */
+function relatedIn(id, tgs){
+  var sec = SECTIONS.filter(function(s){return s.id===id})[0];
+  if (!sec || !tgs) return [];
+  return (sec.get()||[]).map(function(it){
+      var shared = (it.tags||[]).filter(function(t){ return tgs.indexOf(t)>=0; });
+      return { it:it, shared:shared };
+    })
+    .filter(function(x){ return x.shared.length; })
+    .sort(function(a,b){ return b.shared.length - a.shared.length; });
+}
+
+function goBtn(label, tab, key, tag, cls){
+  return '<button class="go'+(cls?' '+cls:'')+'" data-go="'+esc(tab)+'" data-key="'+esc(key||'')+'" data-gotag="'+esc(tag||'')+'">'+esc(label)+' →</button>';
+}
+
+/* la ligne de liens : d'un visuel vers l'élément, la palette, les prompts, les idées… */
+function links(e, from){
+  var out = [];
+  if (from !== 'galerie') out.push(goBtn('Voir le visuel', 'galerie', e.id, '', 'prim'));
+  if (from !== 'elements') out.push(goBtn('Fiche élément', 'elements', e.id, '', 'prim'));
+  var np = nearestPalette(e.colors);
+  if (np) out.push(goBtn('Palette : '+np.p.name, 'palettes', np.p.name, ''));
+  [['prompts','Prompts liés'],['ideas','Idées liées'],['templates','Templates liés'],['systems','Systèmes liés']].forEach(function(sx){
+    var r = relatedIn(sx[0], e.tags);
+    if (!r.length) return;
+    out.push(goBtn(sx[1]+' ('+r.length+')', sx[0], '', r[0].shared[0]));
+  });
+  return '<div class="links">'+out.join('')+'</div>';
+}
+
 /* ---------- cartes ---------- */
+function thumb(url){ return String(url||'').replace('/1200x/','/474x/'); }
+
+function cardGallery(e){
+  var open = state.sel === e.id;
+  if (!open) {
+    return '<article class="tile" data-sel="'+esc(e.id)+'">'
+      + '<img loading="lazy" src="'+esc(thumb(e.img))+'" alt="'+esc(e.name)+'">'
+      + '<div class="tcap"><b>'+esc(e.name)+'</b><span>'+esc((DATA.cats&&DATA.cats[e.cat])||e.cat)+' · '+esc(e.ton)+'</span></div>'
+      + '</article>';
+  }
+  var sw = e.colors.map(function(c){ return '<button class="chip" style="background:'+esc(c)+'" data-copy-text="'+esc(c)+'" title="'+esc(c)+'"></button>'; }).join('');
+  var isFav = favs.indexOf(e.id) >= 0, inMix = mix.indexOf(e.id) >= 0;
+  return '<article class="tile open">'
+    + '<div class="tbig"><img src="'+esc(e.img)+'" alt="'+esc(e.name)+'"></div>'
+    + '<div class="tinfo">'
+    +   '<div class="chead"><h3>'+esc(e.name)+'</h3>'
+    +     '<span><button class="star'+(isFav?' on':'')+'" data-fav="'+esc(e.id)+'">'+(isFav?'★':'☆')+'</button>'
+    +     '<button class="star" data-sel="">✕</button></span></div>'
+    +   '<p class="meta">'+esc((DATA.cats&&DATA.cats[e.cat])||e.cat)+' · '+esc(e.ton)+'</p>'
+    +   '<p class="d">'+esc(e.desc)+'</p>'
+    +   '<div class="sw sm">'+sw+'</div>'
+    +   tags(e.tags)
+    +   links(e, 'galerie')
+    +   '<div class="row">'+copyBtn(e.prompt,'Copier le prompt')
+    +     (e.css?copyBtn(e.css,'Copier le CSS'):'')
+    +     '<button class="copy'+(inMix?' on':'')+'" data-mix="'+esc(e.id)+'">'+(inMix?'− Panier':'+ Panier')+'</button></div>'
+    +   block('Prompt de reproduction', e.prompt)
+    +   (e.css?block('CSS', e.css):'')
+    +   '<p class="mut">'+link(e.pin,'épingle')+(e.src?' · '+link(e.src,'source'):'')+'</p>'
+    + '</div></article>';
+}
+
+
 function cardTemplate(t){
   return '<article class="card">'
     + wire(t.wire)
@@ -139,13 +224,17 @@ function cardElement(e){
   var isFav = favs.indexOf(e.id) >= 0;
   var inMix = mix.indexOf(e.id) >= 0;
   return '<article class="card">'
-    + mock(e.layout, e.colors, e.ton)
+    + '<div class="estrip">'
+    +   (e.img ? '<img loading="lazy" src="'+esc(thumb(e.img))+'" alt="">' : '')
+    +   mock(e.layout, e.colors, e.ton)
+    + '</div>'
     + '<div class="chead"><h3>'+esc(e.name)+'</h3>'
     +   '<button class="star'+(isFav?' on':'')+'" data-fav="'+esc(e.id)+'" title="Favori">'+(isFav?'★':'☆')+'</button></div>'
     + '<p class="meta">'+esc((DATA.cats&&DATA.cats[e.cat])||e.cat)+' · '+esc(e.ton)+'</p>'
     + '<p class="d">'+esc(e.desc)+'</p>'
     + '<div class="sw sm">'+sw+'</div>'
     + tags(e.tags)
+    + links(e, 'elements')
     + '<div class="row">'
     +   copyBtn(e.prompt,'Copier le prompt')
     +   (e.css?copyBtn(e.css,'Copier le CSS'):'')
@@ -238,6 +327,7 @@ function wire(blocks){
 function section(){ return SECTIONS.filter(function(s){return s.id===state.tab})[0] || SECTIONS[0]; }
 
 function matches(item){
+  if (state.cat && item.cat !== state.cat) return false;
   for (var i=0;i<state.tags.length;i++)
     if (!item.tags || item.tags.indexOf(state.tags[i]) < 0) return false;
   if (state.favOnly && (!item.id || favs.indexOf(item.id) < 0)) return false;
@@ -250,6 +340,16 @@ function facetBar(items){
   var present = {};
   items.forEach(function(e){ (e.tags||[]).forEach(function(t){ present[t] = (present[t]||0)+1; }); });
   var html = '';
+  if (DATA.cats) {
+    var nb = {};
+    items.forEach(function(e){ if (e.cat) nb[e.cat] = (nb[e.cat]||0)+1; });
+    var cats = Object.keys(DATA.cats).filter(function(c){ return nb[c] || state.cat===c; });
+    if (cats.length) html += '<div class="facet"><span class="fname">Catégorie</span>'
+      + cats.map(function(c){
+          return '<button class="tag'+(state.cat===c?' on':'')+'" data-cat="'+esc(c)+'">'
+            + esc(DATA.cats[c]) + '<small>'+(nb[c]||0)+'</small></button>'; }).join('')
+      + '</div>';
+  }
   Object.keys(DATA.facets).forEach(function(f){
     var list = DATA.facets[f].filter(function(t){ return present[t] || state.tags.indexOf(t)>=0; });
     if (!list.length) return;
@@ -278,17 +378,24 @@ function render(){
   // les facettes se calculent sur le résultat des autres filtres, pas sur lui-même
   var base = all.filter(function(it){
     if (state.favOnly && (!it.id || favs.indexOf(it.id) < 0)) return false;
+    if (state.cat && it.cat !== state.cat) return false;
     return !state.q || JSON.stringify(it).toLowerCase().indexOf(state.q.toLowerCase()) >= 0;
   });
   var items = all.filter(matches);
+  var focused = state.focus && state.focus.tab === sec.id;
+  if (focused) items = all.filter(function(it){ return String(it.id||it.name) === state.focus.key; });
 
-  document.getElementById('view').innerHTML = facetBar(base) + (items.length
-    ? '<div class="cards">' + items.map(sec.card).join('') + '</div>'
-    : '<p class="mut">Rien ne correspond. <button class="copy" id="reset">Tout réafficher</button></p>');
+  var grid = (sec.grid === 'gal' && !state.sel) ? 'gal' : (sec.grid === 'gal' ? 'gal' : 'cards');
+  document.getElementById('view').innerHTML =
+      (focused ? '<p class="focusbar"><button class="chipf" id="unfocus">← retour à l\'onglet</button> fiche isolée</p>' : facetBar(base))
+    + (items.length
+        ? '<div class="'+grid+'">' + items.map(sec.card).join('') + '</div>'
+        : '<p class="mut">Rien ne correspond. <button class="copy" id="reset">Tout réafficher</button></p>');
 
   document.getElementById('count').textContent = items.length + ' / ' + all.length;
   document.getElementById('filter').innerHTML =
-    state.tags.map(function(t){ return '<button class="chipf" data-tag="'+esc(t)+'">'+esc(t)+' ✕</button>'; }).join('')
+    (state.cat ? '<button class="chipf on" data-cat="'+esc(state.cat)+'">'+esc(DATA.cats[state.cat])+' ✕</button>' : '')
+    + state.tags.map(function(t){ return '<button class="chipf" data-tag="'+esc(t)+'">'+esc(t)+' ✕</button>'; }).join('')
     + (state.tags.length>1?'<button class="chipf" id="clearTags">tout effacer</button>':'')
     + '<button class="chipf'+(state.favOnly?' on':'')+'" id="favBtn">★ favoris ('+favs.length+')</button>';
 
@@ -323,6 +430,24 @@ function mixPrompt(){
   return out;
 }
 
+function go(tab, key, tag){
+  state.tab = tab;
+  state.tags = tag ? [tag] : [];
+  state.cat = null;
+  state.focus = (key && tab !== 'galerie') ? { tab:tab, key:String(key) } : null;
+  state.sel = (key && tab === 'galerie') ? String(key) : null;
+  state.favOnly = false;
+  syncHash(); render();
+  window.scrollTo(0, 0);
+}
+
+function syncHash(){
+  var h = state.tab;
+  if (state.focus) h += '/' + encodeURIComponent(state.focus.key);
+  else if (state.sel) h += '/' + encodeURIComponent(state.sel);
+  if (location.hash.replace('#','') !== h) { skipHash = true; location.hash = h; }
+}
+
 function buildTabs(){
   document.getElementById('tabs').innerHTML = SECTIONS.map(function(s){
     return '<button data-tab="'+s.id+'">'+s.label+' <span class="mut">'+((s.get()||[]).length)+'</span></button>';
@@ -340,14 +465,22 @@ function toClipboard(text, btn){
 
 /* ---------- events ---------- */
 document.addEventListener('click', function(e){
-  var t = e.target.closest ? e.target.closest('[data-tab],[data-c],[data-tag],[data-copy-text],[data-fav],[data-mix],[data-facet],#clearTags,#favBtn,#mixClear,#reset') : null;
+  var t = e.target.closest ? e.target.closest('[data-tab],[data-c],[data-tag],[data-copy-text],[data-fav],[data-mix],[data-facet],[data-sel],[data-go],[data-cat],#clearTags,#favBtn,#mixClear,#reset,#unfocus') : null;
   if (!t) return;
 
-  if (t.dataset.tab)        { state.tab = t.dataset.tab; state.tags = []; location.hash = t.dataset.tab; render(); }
-  else if (t.id==='clearTags'){ state.tags = []; render(); }
-  else if (t.id==='reset')   { state.tags = []; state.q = ''; state.favOnly = false; document.getElementById('q').value=''; render(); }
+  if (t.dataset.tab)        { go(t.dataset.tab, '', ''); }
+  else if (t.id==='unfocus') { state.focus = null; syncHash(); render(); }
+  else if (t.dataset.go != null && t.dataset.go !== '') { go(t.dataset.go, t.dataset.key, t.dataset.gotag); }
+  else if (t.dataset.sel != null) {
+    state.sel = t.dataset.sel || null;
+    syncHash(); render();
+    if (state.sel) { var el = document.querySelector('.tile.open'); if (el) el.scrollIntoView({block:'nearest'}); }
+  }
+  else if (t.id==='clearTags'){ state.tags = []; state.cat = null; render(); }
+  else if (t.id==='reset')   { state.tags = []; state.cat = null; state.q = ''; state.favOnly = false; document.getElementById('q').value=''; render(); }
   else if (t.id==='favBtn')  { state.favOnly = !state.favOnly; render(); }
   else if (t.id==='mixClear'){ mix = []; save('dv.mix', mix); render(); }
+  else if (t.dataset.cat)   { state.cat = (state.cat === t.dataset.cat) ? null : t.dataset.cat; render(); }
   else if (t.dataset.facet) { state.open[t.dataset.facet] = !state.open[t.dataset.facet]; render(); }
   else if (t.dataset.tag)   {
     var i = state.tags.indexOf(t.dataset.tag);
@@ -373,10 +506,18 @@ document.addEventListener('keydown', function(e){
   if (e.key === '/' && document.activeElement.id !== 'q') { e.preventDefault(); document.getElementById('q').focus(); }
   if (e.key === 'Escape' && document.activeElement.id === 'q') { document.activeElement.blur(); }
 });
-window.addEventListener('hashchange', function(){ applyHash(); render(); });
+var skipHash = false;
+window.addEventListener('hashchange', function(){
+  if (skipHash) { skipHash = false; return; }
+  applyHash(); render();
+});
 function applyHash(){
-  var h = location.hash.replace('#','');
-  if (SECTIONS.some(function(s){return s.id===h})) state.tab = h;
+  var h = location.hash.replace('#','').split('/');
+  var tab = h[0], key = h[1] ? decodeURIComponent(h[1]) : '';
+  if (!SECTIONS.some(function(s){return s.id===tab})) return;
+  state.tab = tab;
+  state.focus = (key && tab !== 'galerie') ? { tab:tab, key:key } : null;
+  state.sel   = (key && tab === 'galerie') ? key : null;
 }
 
 applyHash();

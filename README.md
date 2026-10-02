@@ -8,6 +8,7 @@ Site : https://evey-run.github.io/design-vault/
 
 | Onglet | Contenu | Fichier |
 |---|---|---|
+| Galerie | Toutes les images du tableau Pinterest, filtrables, chacune reliée aux autres onglets | `data/elements.js` |
 | Templates | Structures de pages avec wireframe + prompt prêt à coller | `data/templates.js` |
 | Éléments | 82 éléments graphiques issus de mon tableau Pinterest, catégorisés, avec prompt de reproduction | `data/elements.js` |
 | Idées / UI | Éléments et effets de design, avec démo live et code | `data/ideas.js` |
@@ -17,6 +18,31 @@ Site : https://evey-run.github.io/design-vault/
 
 Recherche plein texte dans chaque onglet (raccourci `/`), filtres par tag cumulables (ET), favoris et panier de prompts. L'onglet actif est dans l'URL (`#palettes`).
 
+## L'onglet Galerie
+
+Le point d'entrée visuel : les 82 images du tableau en vignettes. Les images sont
+affichées depuis le CDN de Pinterest (`i.pinimg.com`), aucune n'est copiée dans le repo.
+
+Un clic sur une vignette l'ouvre en grand avec, à côté, tout ce qui a été produit à
+partir d'elle — description, palette relevée, tags, prompt de reproduction, CSS —
+et une rangée de **liens croisés** :
+
+| Lien | Où il mène |
+|---|---|
+| Fiche élément | l'onglet Éléments, isolé sur cette fiche |
+| Palette : *nom* | la palette de l'onglet Couleurs la plus proche des teintes de l'image (distance RVB moyenne) |
+| Prompts liés | l'onglet Prompts filtré sur un tag partagé |
+| Idées liées | l'onglet Idées / UI filtré sur un tag partagé |
+| Templates liés | l'onglet Templates filtré sur un tag partagé |
+| Systèmes liés | l'onglet Design systems filtré sur un tag partagé |
+
+Les mêmes liens figurent sur les fiches de l'onglet Éléments, avec en plus « Voir le
+visuel » qui ramène à la galerie. Chaque vue a son URL : `#galerie/<id>`,
+`#elements/<id>`, `#palettes/<nom>`.
+
+Filtre **Catégorie** en tête des facettes (Landing, Dashboard, App mobile, CV, Icônes…),
+cumulable avec les tags.
+
 ## L'onglet Éléments
 
 Chaque carte correspond à une épingle de mon tableau Pinterest, analysée et rangée :
@@ -24,7 +50,7 @@ Chaque carte correspond à une épingle de mon tableau Pinterest, analysée et r
 - **catégorie** (landing, dashboard, app mobile, CV, icônes, effet…) et **ton** relevé automatiquement (oled / dark / mid / light) ;
 - **tags à facettes** — Ton, Couleur, Effet, Composant, Domaine, Style — cumulables : cliquer `glassmorphism` puis `oled` ne garde que les éléments qui ont les deux ;
 - **palette dominante** extraite de l'image (5 couleurs, quantification médiane), chaque pastille copiable ;
-- **aperçu schématique** redessiné en CSS à partir de cette palette — aucune image tierce n'est republiée ici, la carte renvoie vers l'épingle et vers la source ;
+- **la vignette d'origine et sa recréation CSS côte à côte** : l'aperçu schématique est redessiné à partir de la palette relevée ;
 - **prompt de reproduction** détaillé (structure, valeurs, contraintes) et **CSS** copiable quand l'effet est reproductible.
 
 Deux outils en plus :

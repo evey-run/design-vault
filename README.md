@@ -20,6 +20,13 @@ Prompt système, Règles — et affiche « à remplir » tant qu'un champ est vi
 indiquant exactement quoi éditer. Ajouter un projet : une entrée dans `data/ds.js`
 et une copie d'un des fichiers `*.html` avec le bon `DS_PROJECT`.
 
+Deux sections facultatives n'apparaissent que si le projet les renseigne :
+**Visuels de communication** (`gallery` : `{ img, name, format, desc, cmd }`, et
+`galleryNote`), dont les images vivent dans `assets/<projet>/`, et **Ton et
+écriture** (`voice` : `{ name, desc, yes, no }`). Orivo les utilise : sa page est
+la direction artistique de sa communication, produite avec le skill
+`orivo-comms`.
+
 ## Onglets de Design Vault
 
 | Onglet | Contenu | Fichier |

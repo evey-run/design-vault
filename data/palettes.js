@@ -95,5 +95,13 @@ DATA.palettes = [
     tags: ["gris","ui","dashboard","neutre"],
     desc: "Échelle de gris légèrement chauds : moins clinique que les gris bleus.",
     usage: "Base d un dashboard : 5 niveaux suffisent pour fond, carte, bordure, texte secondaire, texte."
+  },
+  {
+    name: "Void & anneau",
+    mood: "Nocturne, cinématique, une seule lumière",
+    colors: ["#0B0B0D","#151618","#C8C5CF","#8C65FF","#4B7BFE"],
+    tags: ["dark","oled","violet","bleu","gaming","cinematique"],
+    desc: "La palette d'Orivo : un noir presque pur et une seule source de lumière, le dégradé violet → bleu de son logo.",
+    usage: "Fond #0B0B0D sur 80 % de la surface au moins, cartes #151618, texte #C8C5CF (titres #F4F2F7). Le violet #8C65FF et le bleu #4B7BFE ne s'emploient qu'ensemble, en lumière floue (dégradé conique, halo), jamais en aplat derrière du texte."
   }
 ];

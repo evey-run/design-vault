@@ -56,6 +56,28 @@ function rules(){
   return '<ul class="rules">' + P.rules.map(function(r){ return '<li>'+esc(r)+'</li>'; }).join('') + '</ul>';
 }
 
+/* Sections facultatives : n'apparaissent que si le projet les renseigne. */
+function voice(){
+  if (!P.voice || !P.voice.length) return '';
+  return section('Ton et écriture', '<div class="cards">' + P.voice.map(function(v){
+    return '<article class="card"><h3>'+esc(v.name)+'</h3>'
+      + (v.desc?'<p class="d">'+esc(v.desc)+'</p>':'')
+      + (v.yes?'<p class="d"><b>Oui :</b> '+esc(v.yes)+'</p>':'')
+      + (v.no?'<p class="d mut"><b>Non :</b> '+esc(v.no)+'</p>':'')
+      + '</article>'; }).join('') + '</div>');
+}
+
+function gallery(){
+  if (!P.gallery || !P.gallery.length) return '';
+  return section('Visuels de communication', (P.galleryNote?'<p class="mut">'+esc(P.galleryNote)+'</p>':'')
+    + '<div class="dsgal">' + P.gallery.map(function(g){
+      return '<figure><a href="'+esc(g.img)+'" target="_blank" rel="noopener"><img src="'+esc(g.img)+'" alt="'+esc(g.alt||g.name)+'" loading="lazy"></a>'
+        + '<figcaption><b>'+esc(g.name)+'</b>'+(g.format?'<code>'+esc(g.format)+'</code>':'')
+        + (g.desc?'<span>'+esc(g.desc)+'</span>':'')
+        + (g.cmd?'<div class="row">'+copyBtn(g.cmd,'Copier la commande')+'</div>':'')
+        + '</figcaption></figure>'; }).join('') + '</div>');
+}
+
 function links(){
   if (!P.links.length) return '';
   return '<p class="mut">' + P.links.map(function(l){
@@ -78,6 +100,8 @@ function render(){
     + section('Typographie', fonts())
     + section('Tokens', tokens())
     + section('Composants', components())
+    + gallery()
+    + voice()
     + section('Prompt système', prompt())
     + section('Règles', rules());
 }

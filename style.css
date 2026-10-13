@@ -156,3 +156,9 @@ a.ext{color:var(--mut);font-size:12px}
 .specimen{font-size:30px;margin:8px 0 0}
 .rules{margin:0;padding-left:18px;font-size:13px}
 .rules li{margin-bottom:4px}
+.dsgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;align-items:start}
+.dsgal figure{margin:0;border:1px solid var(--b);background:var(--soft)}
+.dsgal img{display:block;width:100%;height:auto}
+.dsgal figcaption{display:flex;flex-direction:column;gap:4px;padding:8px 10px;font-size:12px}
+.dsgal figcaption span,.dsgal figcaption code{color:var(--mut)}
+@font-face{font-family:"Inter Display";src:url(assets/fonts/InterDisplay-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}

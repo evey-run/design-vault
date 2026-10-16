@@ -14,17 +14,21 @@ Site : https://evey-run.github.io/design-vault/
 | `orivo.html` | Orivo Design System |
 | `findy.html` | Findy Design System |
 
-Les quatre pages de design system partagent un même gabarit (`ds.js`) et lisent
-`data/ds.js`. Chacune a six sections — Couleurs, Typographie, Tokens, Composants,
-Prompt système, Règles — et affiche « à remplir » tant qu'un champ est vide, en
-indiquant exactement quoi éditer. Ajouter un projet : une entrée dans `data/ds.js`
-et une copie d'un des fichiers `*.html` avec le bon `DS_PROJECT`.
+Les quatre pages de design system partagent un même gabarit (`ds.js`). Le système
+lui-même vient de `projects/<projet>/DESIGN.md` (format ouvert de Google) : la page
+en affiche les sections dans l'ordre de la spec, avec les couleurs, les styles de
+texte, les échelles et le contraste de chaque composant, et permet de copier le
+DESIGN.md, les tokens W3C, les variables CSS et le bloc à coller dans le
+`AGENTS.md` d'un repo. Un projet sans DESIGN.md affiche le modèle et le prompt
+d'extraction. Ajouter un projet : une entrée dans `data/ds.js`, une copie d'un des
+fichiers `*.html` avec le bon `DS_PROJECT`, puis `projects/<projet>/DESIGN.md`.
 
-Deux sections facultatives n'apparaissent que si le projet les renseigne :
-**Visuels de communication** (`gallery` : `{ img, name, format, desc, cmd }`, et
-`galleryNote`), dont les images vivent dans `assets/<projet>/`, et **Ton et
-écriture** (`voice` : `{ name, desc, yes, no }`). Orivo les utilise : sa page est
-la direction artistique de sa communication, produite avec le skill
+`data/ds.js` garde ce que le DESIGN.md ne couvre pas : `name`, `tagline`, `repo`,
+`links`, et trois sections facultatives : **Visuels de référence** (`gallery` :
+`{ img, name, format, desc, why, cmd }`, et `galleryNote`), dont les images vivent
+dans `projects/<projet>/references/` ; **Ton et écriture** (`voice` :
+`{ name, desc, yes, no }`) ; **Prompt système** (`prompt`). Orivo les utilise : sa
+page est la direction artistique de sa communication, produite avec le skill
 `orivo-comms`.
 
 ## Onglets de Design Vault
@@ -106,24 +110,71 @@ Les autres types :
 
 - **element** : `id`, `name`, `cat`, `layout` (dashboard, mobile, chart, cards, hero, split, table, kanban, map, report, mockup), `tags`, `ton`, `colors`, `desc`, `prompt`, `img`, `pin`, `src`
 - **idea** : `name`, `category`, `tags`, `desc`, `demo` (HTML inline affiché en live), `code`, `prompt`, `url`
-- **palette** : `name`, `mood`, `colors` (tableau de hex), `tags`, `desc`, `usage`
+- **palette** : `name`, `mood`, `colors` (tableau de hex), `tags`, `desc`, `usage`, `pairs` (`[texte, fond, rôle]`, vérifiés à 4,5:1, ou 3:1 si le rôle contient « grand »)
 - **prompt** : `name`, `use`, `tags`, `desc`, `body`
-- **system** : `name`, `mood`, `colors`, `headingFont`, `bodyFont`, `scale`, `radius`, `spacing`, `shadow`, `motion`, `prompt`, `css`, `rules`
+- **system** : `name`, `mood`, `colors`, `headingFont`, `bodyFont`, `scale`, `radius`, `spacing`, `shadow`, `motion`, `prompt`, `css`, `rules` ; la carte en tire un DESIGN.md copiable et les contrastes de ses couples texte/fond
+
+Templates, idées, palettes et systèmes acceptent un champ `defaut` : une phrase qui
+signale un look que les labos voient revenir dans les pages générées (fond crème et
+terracotta, kit de cartes SaaS, « → » sur chaque bouton…). L'entrée reste, avec un
+encadré « Défaut IA » : c'est un bon choix quand le brief le demande, pas un réflexe.
 
 Les facettes de tags et les libellés de catégories vivent dans `data/taxonomy.js` : un tag non listé apparaît dans « Divers ».
 
+## Pour les agents
+
+Le vault suit la structure que recommandent Anthropic, OpenAI et Google pour qu'un
+agent reste cohérent d'un projet à l'autre. `AGENTS.md` (que `CLAUDE.md` importe)
+dit où tout se trouve et comment travailler.
+
+| Chemin | Rôle |
+|---|---|
+| `projects/<projet>/DESIGN.md` | Source de vérité : tokens en YAML, puis le pourquoi de chaque choix |
+| `projects/<projet>/tokens/*.tokens.json` | Les tokens au format W3C 2025.10 (généré) |
+| `projects/<projet>/references/` | Visuels « golden » annotés (README généré) |
+| `projects/<projet>/components/README.md` | Catalogue des vrais composants : code et rendu de référence |
+| `projects/<projet>/decisions.md` | Décisions, questions ouvertes, essais abandonnés |
+| `projects/_template/DESIGN.md` | Modèle pour un nouveau projet |
+| `skills/design-vault/SKILL.md` | La méthode et les défauts à éviter ; lien symbolique dans `~/.claude/skills/` pour l'activer partout |
+| `decisions.md` | Journal du vault lui-même |
+
+## Vérifier
+
+```bash
+node tools/build.mjs                         # régénère les tokens W3C, data/designmd.js et les README de références
+node tools/check.mjs                         # DESIGN.md, contrastes, données, fichiers générés, pages ; code 1 en cas d'erreur
+node tools/shots.mjs <url> --project orivo   # captures 390, 768 et 1440 px à comparer aux références
+node tools/shots.mjs <url> --compare shots/avant   # part des pixels qui changent depuis la dernière capture validée
+node tools/hardcoded.mjs ~/repos/orivo-site --project orivo   # couleurs du code absentes des tokens
+```
+
+`check.mjs` reprend les règles du linter officiel (`npx @google/design.md lint`) et
+ajoute celles du vault : chaque couleur expliquée dans la prose, couples texte/fond
+des palettes, systèmes de l'onglet Design systems exportés en DESIGN.md puis vérifiés,
+contrastes de l'interface. La CI (`.github/workflows/design.yml`) le lance à chaque
+PR, avec le lint et le diff officiels pour bloquer les régressions de tokens et de
+contraste. Les outils tournent sous Node 22 (version testée, celle de la CI), sans dépendance.
+
 ## Lancer en local
 
-Ouvrir `index.html` directement dans le navigateur (double-clic). Les données sont des fichiers `.js`, pas de serveur nécessaire.
+Ouvrir `index.html` directement dans le navigateur (double-clic). Les données sont des fichiers `.js`, pas de serveur nécessaire. Après avoir modifié un DESIGN.md : `node tools/build.mjs`.
 
 
 ## Pile
 
-HTML + CSS + JavaScript vanilla. Zéro dépendance, zéro build, déployé par GitHub Pages depuis `main`.
+HTML + CSS + JavaScript vanilla. Zéro dépendance, aucun build à l'exécution (les fichiers générés sont versionnés), déployé par GitHub Pages depuis `main`.
+
+## Sources
+
+La structure et la boucle de vérification viennent du skill
+[frontend-design](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
+d'Anthropic, du guide [Designing delightful frontends with GPT‑5.4](https://developers.openai.com/blog/designing-delightful-frontends-with-gpt-5-4)
+d'OpenAI, de la spec [DESIGN.md](https://github.com/google-labs-code/design.md) de Google et du format
+[W3C Design Tokens 2025.10](https://www.designtokens.org/tr/2025.10/format/).
 
 ## Cache
 
-Les fichiers sont référencés avec `?v=N` dans `index.html`. GitHub Pages met les
-assets en cache 10 minutes : après une modification de `app.js`, `style.css` ou
-d'un fichier `data/`, incrémenter ce numéro pour que la nouvelle version soit
-servie immédiatement.
+Les fichiers sont référencés avec `?v=N` dans `index.html` et les pages de projet.
+GitHub Pages met les assets en cache 10 minutes : après une modification de
+`app.js`, `ds.js`, `style.css`, `lib/` ou d'un fichier `data/` (y compris
+`data/designmd.js` régénéré), incrémenter ce numéro dans chaque page qui le charge.

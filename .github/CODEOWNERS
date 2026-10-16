@@ -1,0 +1,6 @@
+# Les design systems et ce qui les vérifie demandent la revue de @evey-run.
+# Bloquant seulement avec la protection de main (Settings › Branches › « Require review from Code Owners ») ;
+# utile dès qu'un agent ou une autre personne ouvre des PR.
+/projects/ @evey-run
+/lib/designmd.js @evey-run
+/tools/ @evey-run

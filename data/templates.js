@@ -8,6 +8,7 @@ DATA.templates = [
     tags: ["saas","landing","b2b","conversion"],
     sections: ["Nav","Hero + CTA","Logos clients","3 bénéfices","Démo produit","Pricing","FAQ","CTA final"],
     desc: "Structure classique qui convertit : promesse courte, preuve sociale immédiate, bénéfices avant features.",
+    defaut: "Hero centré, bande de logos, trois cartes de bénéfices, pricing en trois colonnes : la page SaaS que tout modèle produit sans qu'on la demande. OpenAI déconseille la grille de cartes en première impression et toute carte dans le hero. Garder l'ordre des sections, pas le look.",
     prompt: `Crée une landing page SaaS en HTML + Tailwind, une seule page, mobile first.
 Structure dans cet ordre :
 1. Nav sticky, logo à gauche, 3 liens, 1 bouton CTA à droite

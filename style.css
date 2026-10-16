@@ -1,5 +1,5 @@
 :root{
-  --fg:#111; --bg:#fff; --mut:#777; --b:#d8d8d8; --soft:#f4f4f4; --wire:#c9c9c9;
+  --fg:#111; --bg:#fff; --mut:#6e6e6e; --b:#d8d8d8; --soft:#f4f4f4; --wire:#c9c9c9;
 }
 @media (prefers-color-scheme:dark){
   :root{ --fg:#e8e8e8; --bg:#121212; --mut:#8c8c8c; --b:#333; --soft:#1c1c1c; --wire:#3a3a3a; }
@@ -162,3 +162,37 @@ a.ext{color:var(--mut);font-size:12px}
 .dsgal figcaption{display:flex;flex-direction:column;gap:4px;padding:8px 10px;font-size:12px}
 .dsgal figcaption span,.dsgal figcaption code{color:var(--mut)}
 @font-face{font-family:"Inter Display";src:url(assets/fonts/InterDisplay-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+
+/* --- défauts IA signalés, contrastes --- */
+.defaut{font-size:12px;border-left:3px solid var(--fg);background:var(--soft);padding:5px 8px;margin:6px 0}
+.pairs{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.pair{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--mut);border:1px solid var(--b);padding:1px 6px 1px 1px}
+.pair i{font-style:normal;font-weight:600;font-size:12px;padding:1px 5px}
+.pair.ko{color:var(--fg);border-color:var(--fg)}
+.tile:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  .demo *,.demo *::before,.demo *::after{animation:none!important;transition:none!important}
+}
+
+/* --- page design system : prose et tokens du DESIGN.md --- */
+.dsbar{margin:8px 0 4px}
+.prose{font-size:13px;max-width:78ch}
+.prose p,.prose ul,.prose ol,.prose table,.prose blockquote{margin:0 0 10px}
+.prose ul,.prose ol{padding-left:18px}
+.prose li{margin-bottom:4px}
+.prose h3{font-size:14px;margin:16px 0 6px}
+.prose table{border-collapse:collapse;font-size:12px}
+.prose th,.prose td{border-top:1px solid var(--b);padding:3px 10px 3px 0;text-align:left;vertical-align:top}
+.prose blockquote{border-left:2px solid var(--b);padding-left:10px;color:var(--mut)}
+.prose pre{margin:6px 0 4px}
+.prose pre + .copy{margin-bottom:10px}
+.specs{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.spec p{margin:0 0 2px;overflow-wrap:anywhere}
+.spec code{color:var(--mut)}
+.kv.tok{max-width:760px}
+.kv.tok td:first-child{width:22%}
+.kv.tok .rad{display:inline-block;width:56px;height:28px;border:1px solid var(--fg);vertical-align:middle}
+.kv.tok .bar{display:inline-block;height:8px;background:var(--fg);vertical-align:middle}
+.kv.comp td:last-child{white-space:nowrap}
+.aa{display:inline-block;font-weight:600;padding:1px 5px;border:1px solid var(--b)}
+.dsgal figcaption p{margin:0;color:var(--fg)}

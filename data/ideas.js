@@ -41,6 +41,7 @@ DATA.ideas = [
     category: "Fond",
     tags: ["gradient","fond","couleur"],
     desc: "Plusieurs radial-gradients superposés : fond coloré sans image.",
+    defaut: "Les dégradés décoratifs font partie du « kit SaaS » relevé par Anthropic, et pour OpenAI un dégradé ne compte pas comme idée visuelle principale. À garder en ambiance, derrière un vrai sujet : produit, lieu, photo.",
     demo: "<div style='width:100%;height:76px;background:radial-gradient(40% 60% at 20% 30%,#b9d4ff,transparent),radial-gradient(45% 55% at 80% 25%,#ffd3c4,transparent),radial-gradient(50% 60% at 50% 90%,#d9c9ff,transparent),#f6f6f6'></div>",
     code: `.mesh{
   background:
@@ -112,6 +113,7 @@ a.u:hover::after{transform:scaleX(1)}`,
     category: "Micro-interaction",
     tags: ["bouton","hover","cta"],
     desc: "La flèche avance de quelques pixels au hover. Suffit à rendre un CTA vivant.",
+    defaut: "Une « → » ajoutée aux liens et aux boutons fait partie des tics de gabarit qu'Anthropic relève dans les pages générées. Une flèche a sa place quand elle dit où l'on va (étape suivante, lien externe), pas sur chaque bouton.",
     demo: "<style>.dvbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid #777;padding:6px 12px;font-size:12px;color:#333;background:none;cursor:pointer}.dvbtn i{transition:transform .25s;font-style:normal}.dvbtn:hover i{transform:translateX(4px)}</style><button class='dvbtn'>Commencer <i>&rarr;</i></button>",
     code: `.btn i{display:inline-block;transition:transform .25s ease}
 .btn:hover i{transform:translateX(4px)}`,

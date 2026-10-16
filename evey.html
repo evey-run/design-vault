@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Evey Design System</title>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -19,11 +19,13 @@
 <main id="ds"></main>
 
 <footer class="mut">
-  <p>Modifier : <code>data/ds.js</code> → <code>evey</code>. Voir <code>README.md</code>.</p>
+  <p>Modifier : <code>projects/evey/DESIGN.md</code> puis <code>node tools/build.mjs</code> ; visuels, voix et prompt : <code>data/ds.js</code>. Voir <code>README.md</code>.</p>
 </footer>
 
-<script src="data/ds.js?v=5"></script>
+<script src="lib/designmd.js?v=1"></script>
+<script src="data/designmd.js?v=1"></script>
+<script src="data/ds.js?v=6"></script>
 <script>window.DS_PROJECT = "evey";</script>
-<script src="ds.js?v=5"></script>
+<script src="ds.js?v=6"></script>
 </body>
 </html>

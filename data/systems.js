@@ -3,9 +3,10 @@ DATA.systems = [
   {
     name: "Minimal éditorial",
     mood: "Calme, typographique, intemporel",
-    colors: ["#FAFAF8","#EAE8E3","#8C8984","#2B2A28","#111110"],
+    colors: ["#FAFAF8","#EAE8E3","#73716D","#2B2A28","#111110"],
     tags: ["minimal","editorial","portfolio","contenu"],
     desc: "Le système par défaut quand le contenu doit primer. Difficile à rater.",
+    defaut: "Filets d'un pixel, rayons presque nuls, serif de titre, colonnes de texte : le look « journal » que le skill frontend-design d'Anthropic range parmi les choix par défaut des pages générées. Très bien pour du contenu ; pour une marque, lui donner un élément mémorable.",
     headingFont: "Instrument Serif / Fraunces",
     bodyFont: "Inter / system-ui",
     scale: "14 / 16 / 20 / 28 / 40 / 64 (ratio 1.333)",
@@ -14,7 +15,7 @@ DATA.systems = [
     shadow: "Aucune. Bordure 1px à la place",
     motion: "180ms ease-out, uniquement opacité et 8px de translation",
     prompt: `Utilise ce design system : direction minimale et éditoriale, calme, typographique.
-Couleurs : fond #FAFAF8, surface #FFFFFF, bordure #EAE8E3, texte #2B2A28, texte secondaire #8C8984, noir #111110. Aucun accent coloré.
+Couleurs : fond #FAFAF8, surface #FFFFFF, bordure #EAE8E3, texte #2B2A28, texte secondaire #73716D, noir #111110. Aucun accent coloré.
 Typo : serif pour les titres (Instrument Serif), sans pour le texte (Inter). Échelle 14/16/20/28/40/64. Interligne 1.2 pour les titres, 1.6 pour le texte, 68 caractères par ligne maximum.
 Espacement : multiples de 8, sections de 96px (56px mobile).
 Rayons 2px, aucune ombre, bordures 1px.
@@ -22,7 +23,7 @@ Motion : 180ms ease-out, opacité et translation de 8px seulement.
 Interdits : dégradés, ombres portées, emojis, plus de deux polices, couleur d accent.`,
     css: `:root{
   --bg:#FAFAF8; --surface:#FFFFFF; --border:#EAE8E3;
-  --text:#2B2A28; --text-muted:#8C8984; --ink:#111110;
+  --text:#2B2A28; --text-muted:#73716D; --ink:#111110;
   --font-head:"Instrument Serif",Georgia,serif;
   --font-body:Inter,system-ui,sans-serif;
   --step--1:.875rem; --step-0:1rem; --step-1:1.25rem;
@@ -42,6 +43,7 @@ Interdits : dégradés, ombres portées, emojis, plus de deux polices, couleur d
     colors: ["#0B0F14","#121821","#1E2733","#9BA7B4","#5BE49B"],
     tags: ["dark","tech","dev","docs","dashboard"],
     desc: "Pour outils dev, docs techniques, dashboards. Monospace assumé.",
+    defaut: "Fond presque noir et un seul accent vert acide : l'un des cinq looks qu'Anthropic voit revenir quel que soit le sujet. À garder pour un vrai outil de développeur ; ailleurs, changer au moins l'accent ou la typographie.",
     headingFont: "Inter Tight / Geist",
     bodyFont: "Inter + JetBrains Mono pour le code",
     scale: "13 / 15 / 18 / 24 / 32 / 48",
@@ -108,6 +110,7 @@ Interdits : dégradés, ombres, coins arrondis, icônes décoratives, centrage s
     colors: ["#F6F8FC","#FFFFFF","#D7DEEB","#3B6FE0","#16213C"],
     tags: ["saas","b2b","landing","produit"],
     desc: "Le système sûr pour une landing qui doit convertir sans faire peur.",
+    defaut: "Le « kit de cartes SaaS » : cartes arrondies identiques, un seul rayon partout, la même ombre douce. Anthropic le classe parmi les défauts des pages générées, et OpenAI déconseille la grille de cartes en première impression. Une carte n'existe que si elle contient une interaction.",
     headingFont: "Inter Tight / Satoshi",
     bodyFont: "Inter",
     scale: "14 / 16 / 20 / 30 / 44 / 60",
@@ -142,6 +145,7 @@ Interdits : dégradé violet, plus d un accent, illustrations 3D génériques, o
     colors: ["#FDFBF7","#F0E9DD","#D6C5A8","#6E6354","#2A251E"],
     tags: ["luxe","mode","premium","vitrine"],
     desc: "Beaucoup de vide, grandes images, typo serif. Le vide fait le prix.",
+    defaut: "Fond crème et grande serif à fort contraste : le premier des looks par défaut relevés par Anthropic (il y ajoute un accent terracotta). La photo et le vide doivent porter la marque, pas la serif seule.",
     headingFont: "Canela / Playfair Display",
     bodyFont: "Inter / Söhne",
     scale: "14 / 16 / 22 / 34 / 56 / 88",

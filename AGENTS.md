@@ -30,7 +30,7 @@ Orivo a son DESIGN.md. Evey, Tribos et Findy n'en ont pas encore : prompt « Ext
 
 Thèmes et marques : la spec DESIGN.md n'a pas encore de thèmes. Le thème principal va dans les tokens, l'autre (clair ou sombre) dans la section Colors ; le jour où un projet en a besoin en code, on ajoute `tokens/<projet>.resolver.json` au format W3C (sets et modifiers), qui gère thèmes et multi-marque.
 
-Exports Tailwind : `npx @google/design.md export --format css-tailwind projects/<projet>/DESIGN.md` (v4) ou `--format json-tailwind` (v3). Les variables CSS et les tokens W3C se copient aussi depuis la page du projet.
+Exports Tailwind : `npx @google/design.md export --format css-tailwind projects/<projet>/DESIGN.md` (v4) ou `--format json-tailwind` (v3). Le v4 (0.4.0) met une pile de polices entière entre guillemets : à corriger à la main, ou prendre les variables CSS du vault. Les variables CSS et les tokens W3C se copient aussi depuis la page du projet.
 
 ## Modifier le vault
 

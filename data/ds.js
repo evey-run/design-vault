@@ -13,8 +13,20 @@ DATA.ds = {
 
   tribos: {
     name: "Tribos Design System",
-    tagline: "",
+    tagline: "Le sport, mais avec tes potes : une app claire où un seul orange porte ce qui agit et progresse, et un site en affiche sombre qui la met en scène.",
     repo: "~/repos/tribos",
+    galleryNote: "Visuels déjà publiés, copiés depuis les repos Tribos et Tribos-Landing-Page.",
+    gallery: [
+      { img:"projects/tribos/references/store-accueil.jpg", name:"Fiche App Store, accueil", format:"App Store · 1320×2868 (copie à 660 de large)",
+        desc:"couverture en dégradé orange, renard et titre Montserrat ExtraBold, vraie capture de l'accueil",
+        why:"La vraie app en français sur le dégradé de marque : série, séance du jour, paire Points ×2 et Défi, classement, barre d'onglets en pilule. L'orange ne sert qu'à ce qui agit ou progresse, tout le reste est blanc. Attention : le titre est blanc sur l'orange (2,89:1) et la carte de la séance montre encore l'ancien loup, hors charte." },
+      { img:"projects/tribos/references/store-groupe.jpg", name:"Fiche App Store, groupe", format:"App Store · 1320×2868 (copie à 660 de large)",
+        desc:"planche crème, titre en encre, écran du groupe qui déborde par le bas",
+        why:"Le langage clair sans faute de contraste : fond crème, titre en encre #2C3A43 en Montserrat ExtraBold, barre de l'objectif collectif dans la gamme des oranges, puces de contribution, chat, onglet actif en pilule orange. Le chiffre réalisé porte l'accent, la cible reste en retrait." },
+      { img:"projects/tribos/references/og-card.jpg", name:"Carte sociale du site", format:"og · 1200×630",
+        desc:"affiche blaze, titre Bricolage Grotesque, écran d'accueil recréé en DOM",
+        why:"La version sombre de la marque : dégradé orange vers brun, titre blanc posé sur la partie sombre de l'affiche, et la vraie app, claire, qui s'en détache. Rendue depuis tools/og-card.html avec les vrais tokens du site, elle reste lisible réduite à 400 px. L'écran porte encore l'ancien loup." }
+    ],
     links: []
   },
 
@@ -119,8 +131,20 @@ Visuel :
 
   findy: {
     name: "Findy Design System",
-    tagline: "",
+    tagline: "Vos finances dans le noir et le verre : un tableau de bord local et calme, un seul violet pour guider, le vert et le rouge réservés à l'argent.",
     repo: "~/repos/findy",
+    galleryNote: "Visuels déjà publiés, copiés depuis les repos findy et findy-site (les captures WebP du site converties en JPEG).",
+    gallery: [
+      { img:"projects/findy/references/dashboard.jpg", name:"Tableau de bord Mac", format:"capture · 1600×1000",
+        desc:"L'app de bureau en mode démo, la capture du héros du site",
+        why:"Tout le système en une image : fond presque noir, cartes de verre à peine plus claires (#1C1C1E) cernées d'un filet blanc, violet réservé aux repères (segment Mois, libellés de panneau, entrée active), vert et rouge seulement sur les flux et les montants. Le tableau de bord tient dans la fenêtre sans défiler. Attention : les libellés gris des indicateurs (zinc-500) sont à 3,52:1." },
+      { img:"projects/findy/references/mobile-home.jpg", name:"Accueil Android", format:"capture · 780×1688",
+        desc:"L'app mobile en mode démo (branche non fusionnée), l'écran du téléphone sur le site",
+        why:"Un seul montant lisible à bout de bras, en 34 px sur la carte de solde en maillage violet ; trois actions dont la principale en blanc ; le reste à vivre en deux chiffres ; puis la liste. La barre d'onglets flottante ouvre l'onglet actif en violet avec son libellé, les autres restent des icônes. Seules les dépenses sont en couleur." },
+      { img:"projects/findy/references/og.jpg", name:"Aperçu de lien", format:"og · 1200×630",
+        desc:"La carte de partage du site, rendue depuis tools/og.html",
+        why:"La gemme violette et son halo à droite, le titre sur deux lignes à gauche dont la seconde en dégradé blanc vers lilas, une phrase en gris et l'adresse en bas : lisible réduite à 400 px, une seule lumière, aucun autre accent." }
+    ],
     links: []
   }
 

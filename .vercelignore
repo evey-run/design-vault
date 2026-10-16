@@ -1,0 +1,11 @@
+# Le site seulement : les guides d'agent et les outils restent dans le repo.
+# Les motifs commencent par / pour ne viser que la racine (les pages projet renvoient à leurs README et decisions.md).
+/AGENTS.md
+/CLAUDE.md
+/README.md
+/decisions.md
+/projects/_template
+/skills
+/tools
+/.github
+/shots

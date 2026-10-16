@@ -1,0 +1,41 @@
+name: Vérification du design
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  design:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Vault (DESIGN.md, contrastes, données, fichiers générés)
+        run: node tools/check.mjs
+
+      - name: DESIGN.md avec la CLI officielle de Google
+        run: |
+          for f in projects/*/DESIGN.md; do
+            echo "== $f"
+            npx --yes @google/design.md@0.4.0 lint "$f"
+          done
+
+      - name: Régressions de tokens et de contraste par rapport à la base
+        if: github.event_name == 'pull_request'
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          for f in projects/*/DESIGN.md; do
+            git cat-file -e "$base:$f" 2>/dev/null || continue
+            git show "$base:$f" > /tmp/before.md
+            echo "== $f"
+            npx --yes @google/design.md@0.4.0 diff /tmp/before.md "$f"
+          done

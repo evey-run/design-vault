@@ -1,5 +1,6 @@
-// Design systems par projet. Un objet par page : evey.html, tribos.html, orivo.html, findy.html
-// Tout champ vide s'affiche comme « à remplir » sur la page : rien ne casse.
+// Pages de design system par projet : evey.html, tribos.html, orivo.html, findy.html.
+// Le design system lui-même vit dans projects/<projet>/DESIGN.md (tokens et règles) ;
+// ce fichier garde ce que le DESIGN.md ne couvre pas : présentation, liens, visuels, voix, prompt système.
 window.DATA = window.DATA || {};
 DATA.ds = {
 
@@ -7,12 +8,6 @@ DATA.ds = {
     name: "Evey Design System",
     tagline: "Mon système personnel : ce que j'utilise par défaut quand je démarre un projet.",
     repo: "",
-    colors: [],          // { hex:"#0E0E10", name:"Encre", role:"Texte principal" }
-    fonts:  { heading:"", body:"", mono:"", scale:"" },
-    tokens: { spacing:"", radius:"", shadow:"", motion:"", grid:"", breakpoints:"" },
-    components: [],      // { name:"Bouton primaire", desc:"…", prompt:"…" }
-    prompt: "",          // le prompt à coller pour qu'un modèle respecte ce système
-    rules: [],           // "Un seul CTA primaire par écran"
     links: []            // { label:"Figma", url:"https://…" }
   },
 
@@ -20,12 +15,6 @@ DATA.ds = {
     name: "Tribos Design System",
     tagline: "",
     repo: "~/repos/tribos",
-    colors: [],
-    fonts:  { heading:"", body:"", mono:"", scale:"" },
-    tokens: { spacing:"", radius:"", shadow:"", motion:"", grid:"", breakpoints:"" },
-    components: [],
-    prompt: "",
-    rules: [],
     links: []
   },
 
@@ -33,67 +22,64 @@ DATA.ds = {
     name: "Orivo Design System",
     tagline: "Une seule lumière dans une pièce sombre pleine de jeux. Direction artistique de la communication d'Orivo (mails, Reddit, réseaux), inspirée de celle de Raycast : le produit en héros, le vide, une lumière violet → bleu, très peu de mots.",
     repo: "~/repos/orivo",
-    colors: [
-      { hex:"#0B0B0D", name:"Void", role:"Fond : 80 à 90 % de chaque visuel" },
-      { hex:"#060609", name:"Abyss", role:"Vignettage, ombres profondes" },
-      { hex:"#151618", name:"Panel", role:"Cartes, corps des mails" },
-      { hex:"#2A2930", name:"Line", role:"Filets, séparateurs" },
-      { hex:"#F4F2F7", name:"White", role:"Titres (jamais #FFF pur)" },
-      { hex:"#C8C5CF", name:"Body", role:"Texte courant, sous-titres" },
-      { hex:"#9B97A3", name:"Ash", role:"Kickers, métadonnées" },
-      { hex:"#8C65FF", name:"Ring violet", role:"Violet de l'anneau, accent de marque" },
-      { hex:"#7D54F4", name:"Violet", role:"Violet de l'app (liens, boutons d'interface)" },
-      { hex:"#C1AAFD", name:"Lavender", role:"Liseré de la carte sélectionnée, mot accentué" },
-      { hex:"#DAD8FF", name:"Frost", role:"Bouton pilule givré, texte clair sur violet" },
-      { hex:"#4B7BFE", name:"Ring blue", role:"Côté froid de l'anneau" },
-      { hex:"#6BB5FC", name:"Sky", role:"Bleu le plus clair de l'anneau, par touches" }
-    ],
-    fonts:  {
-      heading:"Inter Display",
-      body:"Inter",
-      mono:"JetBrains Mono (kickers, dates, versions, en capitales, +8 % d'interlettrage)",
-      scale:"Titres SemiBold 600, interlettrage −2,5 %, interligne 1,02, 2 à 7 mots sur une image ; sous-titres 400 en Body. Tailles en vmin : titre 7 à 10, sous-titre 3,2 à 3,6, kicker 2,1."
-    },
-    tokens: {
-      spacing:"Marges ≈ 8 à 9 % du petit côté ; rien de plus près du bord",
-      radius:"Cartes 13 px à l'échelle de l'app (≈ 10 % de la hauteur d'une jaquette), appareils 7 vmin, pilules 99 px",
-      shadow:"Pas d'ombres portées dures : halos larges (flou ≥ 6 % du visuel), lueur violette sous le sujet, grain de film ≈ 7 % contre le banding",
-      motion:"Vidéos de 5 à 20 s en 60 fps, vraie navigation à la manette ou au doigt, une idée par clip, aucun carton d'intro",
-      grid:"Un sujet par image ; texte en haut à gauche (kicker puis titre) ou en bas à droite pour un macro ; jamais de titre centré sur le produit",
-      breakpoints:"Formats : og 1200×630 · x 1600×900 · reddit 1200×900 · square 1080×1080 · portrait 1080×1350 · story 1080×1920 (texte à 250 px du haut, 340 px du bas) · email 1200×675 · youtube 1280×720"
-    },
-    components: [
-      { name:"title — carte de texte", desc:"Kicker mono, titre court, sous-titre, wordmark ; la lumière de l'anneau sort d'un coin. Pour les posts texte Reddit/réseaux, citations, « bientôt ».",
-        prompt:"node render.mjs --template title --format x --data '{\"kicker\":\"Public beta\",\"title\":\"Your library,\\nin your pocket.\",\"sub\":\"iPhone and iPad, free on TestFlight.\"}'" },
-      { name:"ring — l'anneau en objet", desc:"Le logo seul dans le noir, lumière qui coule au sol. Annonces de marque, en-têtes de newsletter, bannières.",
-        prompt:"node render.mjs --template ring --format square --data '{\"kicker\":\"Orivo newsletter · <b>October</b>\",\"title\":\"One library.\\nEvery store.\"}'" },
-      { name:"perspective — l'app inclinée", desc:"Une vraie capture inclinée dans l'espace sous la lumière. Grosses versions, « le nouveau… ».",
-        prompt:"node render.mjs --template perspective --format og --data '{\"image\":\"mac-most-played\",\"kicker\":\"Browse by activity\",\"title\":\"Sorted by what you actually play.\"}'" },
-      { name:"device — téléphone ou tablette", desc:"Cadre neutre sans logo, en paysage, éclairé par l'anneau. Nouvelles plateformes (bêta iPhone/iPad, Android).",
-        prompt:"node render.mjs --template device --format x --data '{\"kicker\":\"TestFlight · <b>Public beta</b>\",\"title\":\"Orivo, now on iPhone and iPad.\"}'" },
-      { name:"rim — macro du liseré", desc:"Le liseré lavande de la carte sélectionnée et son reflet, profondeur de champ. L'équivalent de la barre rouge de Raycast : navigation, manette, sensations.",
-        prompt:"node render.mjs --template rim --format x --data '{\"kicker\":\"Controller-first\",\"title\":\"Built for the couch.\"}'" },
-      { name:"changelog — carte de version", desc:"Pilule de version, date en mono, titre, trois lignes, petite capture inclinée. Posts de version, en-têtes de notes.",
-        prompt:"node render.mjs --template changelog --format x --data '{\"version\":\"v0.3.7\",\"date\":\"Oct 13, 2026\",\"title\":\"Install what you own,\\nfrom anywhere.\",\"items\":[\"iPhone and iPad, in public beta\"],\"image\":\"iphone-library\"}'" },
-      { name:"rail — le rail de la bibliothèque", desc:"Une carte sélectionnée parmi les jaquettes, comme dans l'app. Nouvelles de la bibliothèque, d'un nouveau store.",
-        prompt:"node render.mjs --template rail --format x --data '{\"kicker\":\"Orivo\",\"title\":\"All your games in one place.\"}'" }
-    ],
     galleryNote: "Campagne exemple rendue par le skill orivo-comms (~/.claude/skills/orivo-comms), à partir de vraies captures de l'app. Commandes à lancer depuis le dossier scripts/ du skill.",
-    gallery: [
-      { img:"assets/orivo/overview.jpg", name:"Vue d'ensemble", format:"12 visuels, 7 gabarits", desc:"Une même lumière, un même vide, une même typo sur tous les formats", cmd:"node render.mjs ../examples/campaign.json --out ../examples" },
-      { img:"assets/orivo/beta-x.jpg", name:"Bêta iPhone & iPad", format:"x · 1600×900", desc:"device — X, Bluesky, Threads, Mastodon", cmd:"node render.mjs --template device --format x --name beta-x --data '{\"kicker\":\"TestFlight · <b>Public beta</b>\",\"title\":\"Orivo, now on iPhone and iPad.\"}'" },
-      { img:"assets/orivo/beta-reddit.jpg", name:"Bêta, post image Reddit", format:"reddit · 1200×900", desc:"device sans texte : le titre du post porte le message", cmd:"node render.mjs --template device --format reddit --name beta-reddit" },
-      { img:"assets/orivo/release-x.jpg", name:"Version 0.3.7", format:"x · 1600×900", desc:"changelog — post de version (vrais apports de la 0.3.7)", cmd:"node render.mjs ../examples/campaign.json" },
-      { img:"assets/orivo/library-x.jpg", name:"La bibliothèque", format:"x · 1600×900", desc:"perspective sans texte — héros de lancement", cmd:"node render.mjs --template perspective --format x --name library-x --data '{\"image\":\"mac-library\"}'" },
-      { img:"assets/orivo/couch-x.jpg", name:"Pensé pour le canapé", format:"x · 1600×900", desc:"rim — macro du liseré et de son reflet", cmd:"node render.mjs --template rim --format x --name couch-x --data '{\"kicker\":\"Controller-first\",\"title\":\"Built for the couch.\"}'" },
-      { img:"assets/orivo/rail-x.jpg", name:"Le rail", format:"x · 1600×900", desc:"rail — la promesse d'Orivo en une image", cmd:"node render.mjs --template rail --format x --name rail-x --data '{\"kicker\":\"Orivo\",\"title\":\"All your games in one place.\"}'" },
-      { img:"assets/orivo/most-played-og.jpg", name:"Aperçu de lien", format:"og · 1200×630", desc:"perspective avec titre — carte de partage", cmd:"node render.mjs --template perspective --format og --name most-played-og --data '{\"image\":\"mac-most-played\",\"kicker\":\"Browse by activity\",\"title\":\"Sorted by what you actually play.\"}'" },
-      { img:"assets/orivo/brand-og.jpg", name:"Carte de marque", format:"og · 1200×630", desc:"ring seul — aperçu du site", cmd:"node render.mjs --template ring --format og --name brand-og" },
-      { img:"assets/orivo/newsletter-square.jpg", name:"Newsletter", format:"square · 1080×1080", desc:"ring avec kicker et titre", cmd:"node render.mjs --template ring --format square --name newsletter-square --data '{\"kicker\":\"Orivo newsletter · <b>October</b>\",\"title\":\"One library.\\nEvery store.\"}'" },
-      { img:"assets/orivo/carousel.jpg", name:"Carrousel Instagram (4 slides)", format:"portrait · 4 × 1080×1350", desc:"perspective → device → title (lumière en bas) → ring : même lumière, même typo", cmd:"node render.mjs ../examples/campaign.json --out ../examples" },
-      { img:"assets/orivo/beta-portrait.jpg", name:"Carrousel, slide 1", format:"portrait · 1080×1350", desc:"title — Instagram / Threads", cmd:"node render.mjs --template title --format portrait --name beta-portrait --data '{\"kicker\":\"Public beta\",\"title\":\"Your library,\\nin your pocket.\",\"sub\":\"iPhone and iPad, free on TestFlight.\"}'" },
-      { img:"assets/orivo/story.jpg", name:"Story", format:"story · 1080×1920", desc:"title — zones sûres respectées", cmd:"node render.mjs --template title --format story --name story --data '{\"kicker\":\"New on iPhone\",\"title\":\"Every game you own. One place.\"}'" },
-      { img:"assets/orivo/email-hero.jpg", name:"Héros de mail", format:"email · 1200×675", desc:"perspective — en-tête des templates Resend", cmd:"node render.mjs --template perspective --format email --name email-hero --data '{\"image\":\"mac-game\",\"tilt\":\"right\"}'" }
+    gallery: [   // { img, name, format, desc, why : ce qui marche et pourquoi, cmd }
+      { img:"projects/orivo/references/overview.jpg", name:"Vue d'ensemble", format:"12 visuels, 7 gabarits",
+        desc:"Une même lumière, un même vide, une même typo sur tous les formats",
+        why:"C'est le test de cohérence d'une campagne : la lumière violette reste à la même place relative, le titre garde la même taille et le même interlettrage, le vide domine partout. Attention, la vignette du rail porte encore « All your games, in one place. » avec une virgule ; le slogan s'écrit sans (voir « Le rail »).",
+        cmd:"node render.mjs ../examples/campaign.json --out ../examples" },
+      { img:"projects/orivo/references/beta-x.jpg", name:"Bêta iPhone & iPad", format:"x · 1600×900",
+        desc:"device — X, Bluesky, Threads, Mastodon",
+        why:"Le téléphone en paysage dans un cadre neutre, éclairé par l'anneau depuis le bas ; kicker et titre de cinq mots en haut à gauche, le produit au centre. On voit l'app avant de lire quoi que ce soit.",
+        cmd:"node render.mjs --template device --format x --name beta-x --data '{\"kicker\":\"TestFlight · <b>Public beta</b>\",\"title\":\"Orivo, now on iPhone and iPad.\"}'" },
+      { img:"projects/orivo/references/beta-reddit.jpg", name:"Bêta, post image Reddit", format:"reddit · 1200×900",
+        desc:"device sans texte : le titre du post porte le message",
+        why:"Aucun mot sur l'image : sur Reddit, le titre du post dit la nouvelle et l'image montre seulement l'app. Le 4:3 s'affiche sans recadrage dans le fil.",
+        cmd:"node render.mjs --template device --format reddit --name beta-reddit" },
+      { img:"projects/orivo/references/release-x.jpg", name:"Version 0.3.7", format:"x · 1600×900",
+        desc:"changelog — post de version (vrais apports de la 0.3.7)",
+        why:"Pilule de version et date en mono, titre sur deux lignes, trois apports réels en une ligne chacun, petite capture inclinée à droite : la nouvelle se lit en une seconde dans un fil.",
+        cmd:"node render.mjs ../examples/campaign.json" },
+      { img:"projects/orivo/references/library-x.jpg", name:"La bibliothèque", format:"x · 1600×900",
+        desc:"perspective sans texte — héros de lancement",
+        why:"Une vraie capture inclinée sous la lumière, sans un mot : l'app est le message. Le bord droit déborde du cadre exprès, le contenu clé reste dedans.",
+        cmd:"node render.mjs --template perspective --format x --name library-x --data '{\"image\":\"mac-library\"}'" },
+      { img:"projects/orivo/references/couch-x.jpg", name:"Pensé pour le canapé", format:"x · 1600×900",
+        desc:"rim — macro du liseré et de son reflet",
+        why:"Le liseré lavande et son reflet en gros plan, le reste dans le flou : la sensation du canapé sans montrer de manette. Le texte passe en bas à droite, comme le veut un macro.",
+        cmd:"node render.mjs --template rim --format x --name couch-x --data '{\"kicker\":\"Controller-first\",\"title\":\"Built for the couch.\"}'" },
+      { img:"projects/orivo/references/rail-x.jpg", name:"Le rail", format:"x · 1600×900",
+        desc:"rail — la promesse d'Orivo en une image",
+        why:"Une carte sélectionnée, cerclée du liseré, parmi les jaquettes, exactement comme dans l'app : la promesse d'Orivo sans explication. Le slogan est écrit sans virgule.",
+        cmd:"node render.mjs --template rail --format x --name rail-x --data '{\"kicker\":\"Orivo\",\"title\":\"All your games in one place.\"}'" },
+      { img:"projects/orivo/references/most-played-og.jpg", name:"Aperçu de lien", format:"og · 1200×630",
+        desc:"perspective avec titre — carte de partage",
+        why:"Le titre tient en cinq mots à gauche, la capture inclinée à droite : la carte reste lisible réduite à 400 px de large, la taille d'un aperçu dans un fil.",
+        cmd:"node render.mjs --template perspective --format og --name most-played-og --data '{\"image\":\"mac-most-played\",\"kicker\":\"Browse by activity\",\"title\":\"Sorted by what you actually play.\"}'" },
+      { img:"projects/orivo/references/brand-og.jpg", name:"Carte de marque", format:"og · 1200×630",
+        desc:"ring seul — aperçu du site",
+        why:"L'anneau seul dans le noir, la lumière qui coule dessous : l'aperçu du site quand il n'y a rien d'autre à dire. Le logo n'est ni recoloré ni déformé.",
+        cmd:"node render.mjs --template ring --format og --name brand-og" },
+      { img:"projects/orivo/references/newsletter-square.jpg", name:"Newsletter", format:"square · 1080×1080",
+        desc:"ring avec kicker et titre",
+        why:"Le kicker accentue un seul mot en Lavender, l'anneau occupe le centre, le titre de quatre mots se place dessous : l'en-tête de newsletter tient en trois éléments.",
+        cmd:"node render.mjs --template ring --format square --name newsletter-square --data '{\"kicker\":\"Orivo newsletter · <b>October</b>\",\"title\":\"One library.\\nEvery store.\"}'" },
+      { img:"projects/orivo/references/carousel.jpg", name:"Carrousel Instagram (4 slides)", format:"portrait · 4 × 1080×1350",
+        desc:"perspective → device → title (lumière en bas) → ring : même lumière, même typo",
+        why:"La lumière garde la même place d'une slide à l'autre (les slides title prennent light: \"bottom\"), la première accroche avec le produit, la dernière, l'anneau, porte l'appel à l'action.",
+        cmd:"node render.mjs ../examples/campaign.json --out ../examples" },
+      { img:"projects/orivo/references/beta-portrait.jpg", name:"Carrousel, slide 1", format:"portrait · 1080×1350",
+        desc:"title — Instagram / Threads",
+        why:"Carte de texte : kicker, titre de six mots sur deux lignes, sous-titre en Body, wordmark et URL en bas ; la lumière sort du coin et ne passe jamais derrière le texte.",
+        cmd:"node render.mjs --template title --format portrait --name beta-portrait --data '{\"kicker\":\"Public beta\",\"title\":\"Your library,\\nin your pocket.\",\"sub\":\"iPhone and iPad, free on TestFlight.\"}'" },
+      { img:"projects/orivo/references/story.jpg", name:"Story", format:"story · 1080×1920",
+        desc:"title — zones sûres respectées",
+        why:"Le texte reste dans les zones sûres, à 250 px du haut et 340 px du bas : l'interface d'Instagram ne cache ni le titre ni le wordmark.",
+        cmd:"node render.mjs --template title --format story --name story --data '{\"kicker\":\"New on iPhone\",\"title\":\"Every game you own. One place.\"}'" },
+      { img:"projects/orivo/references/email-hero.jpg", name:"Héros de mail", format:"email · 1200×675",
+        desc:"perspective — en-tête des templates Resend",
+        why:"Capture inclinée vers la droite et aucun texte : le mail porte déjà le titre juste en dessous. L'image se lit à 600 px de large, la taille d'affichage d'un mail.",
+        cmd:"node render.mjs --template perspective --format email --name email-hero --data '{\"image\":\"mac-game\",\"tilt\":\"right\"}'" }
     ],
     voice: [
       { name:"Qui parle", desc:"Orivo est fait par un seul développeur indépendant, et la voix le dit.", yes:"« I » sur Reddit, Discord et dans la newsletter ; « Orivo now… », « You can… » dans les notes de version et sur le site.", no:"« we » pour une équipe qui n'existe pas ; « our users », « gamers »." },
@@ -123,19 +109,6 @@ Visuel :
 - Pas de mots creux (seamless, revolutionary, ultimate, unleash, epic…), pas de point d'exclamation, pas d'emoji dans les titres, anglais US, casse de phrase.
 - Les limites d'emblée : bêta, builds non signés, iOS ne lance pas de jeux PC, licence.
 - Un lien, un appel à l'action (verbe + objet : « Join the beta », « Download for Mac »). Signature : « All your games in one place. »`,
-    rules: [
-      "Le produit est le héros : chaque visuel montre Orivo (bibliothèque, rail, liseré, anneau), jamais une image « gaming » générique",
-      "Une seule lumière : le vide sur 80 % et le dégradé violet → bleu de l'anneau ; aucune autre couleur d'accent",
-      "Sur une image : un kicker mono et un titre de 2 à 7 mots, ou rien. La phrase vit dans le post, l'objet du mail, la légende",
-      "Jamais de logo de store, de plateforme ou de console ; les stores sont nommés dans le texte seulement",
-      "Les captures sont vraies et à jour ; un visuel iOS ne montre que ce que fait iOS (pas de lancement de jeux PC)",
-      "La première phrase dit ce que le lecteur peut faire maintenant ; une idée par phrase ; casse de phrase partout",
-      "Aucun mot creux, aucun point d'exclamation, aucun emoji dans un titre ou un objet de mail",
-      "Les limites d'emblée : bêta, builds non signés, licence source-available",
-      "Sur Reddit : « I built… », se présenter comme le développeur, respecter les règles de chaque sub, répondre à chaque question",
-      "Un lien et un appel à l'action par pièce ; la même nouvelle a le même titre, le même visuel et le même lien partout",
-      "Ne rien publier soi-même : posts, broadcasts Resend et déploiements se valident par le propriétaire"
-    ],
     links: [
       { label:"Site", url:"https://orivo.evey.run" },
       { label:"Code", url:"https://github.com/justeozan/orivo" },
@@ -148,12 +121,6 @@ Visuel :
     name: "Findy Design System",
     tagline: "",
     repo: "~/repos/findy",
-    colors: [],
-    fonts:  { heading:"", body:"", mono:"", scale:"" },
-    tokens: { spacing:"", radius:"", shadow:"", motion:"", grid:"", breakpoints:"" },
-    components: [],
-    prompt: "",
-    rules: [],
     links: []
   }
 

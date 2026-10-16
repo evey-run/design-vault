@@ -35,6 +35,13 @@ function tags(t){ return !t||!t.length ? '' : '<div class="tags">'+t.map(functio
 function copyBtn(text,label){ if(!text) return ''; COPY.push(text); return '<button class="copy" data-c="'+(COPY.length-1)+'">'+(label||'Copier')+'</button>'; }
 function block(title,text){ return !text ? '' : '<details><summary>'+esc(title)+'</summary><pre>'+esc(text)+'</pre><div class="row">'+copyBtn(text)+'</div></details>'; }
 function link(url,label){ return !url ? '' : '<a class="ext" href="'+esc(url)+'" target="_blank" rel="noopener">'+(label||'référence')+' ↗</a>'; }
+/* un look que les labos voient revenir dans les pages générées : signalé, pas interdit */
+function defaut(x){ return x.defaut ? '<p class="defaut"><b>Défaut IA</b> '+esc(x.defaut)+'</p>' : ''; }
+function aa(fg, bg, role){
+  var x = DesignMD.contrast(fg, bg), ok = x !== null && x >= (/grand/i.test(role||'') ? 3 : 4.5);
+  return '<span class="pair'+(ok?'':' ko')+'" title="'+esc(fg+' sur '+bg)+'"><i style="color:'+esc(fg)+';background:'+esc(bg)+'">Aa</i>'
+    + esc(role||'')+' '+(x===null?'?':DesignMD.ratio(x))+(ok?'':' ✗')+'</span>';
+}
 
 /* saturation d'un hex, pour trouver la couleur d'accent d'une palette */
 function sat(h){
@@ -177,7 +184,7 @@ function thumb(url){ return String(url||'').replace('/1200x/','/474x/'); }
 function cardGallery(e){
   var open = state.sel === e.id;
   if (!open) {
-    return '<article class="tile" data-sel="'+esc(e.id)+'">'
+    return '<article class="tile" data-sel="'+esc(e.id)+'" tabindex="0" role="button" aria-label="'+esc('Ouvrir '+e.name)+'">'
       + '<img loading="lazy" src="'+esc(thumb(e.img))+'" alt="'+esc(e.name)+'">'
       + '<div class="tcap"><b>'+esc(e.name)+'</b><span>'+esc((DATA.cats&&DATA.cats[e.cat])||e.cat)+' · '+esc(e.ton)+'</span></div>'
       + '</article>';
@@ -209,6 +216,7 @@ function cardTemplate(t){
     + '<h3>'+esc(t.name)+'</h3>'
     + '<p class="meta">'+esc([t.type,t.stack].filter(Boolean).join(' · '))+'</p>'
     + (t.desc?'<p class="d">'+esc(t.desc)+'</p>':'')
+    + defaut(t)
     + tags(t.tags)
     + (t.sections?'<p class="mut">Sections : '+esc(t.sections.join(' / '))+'</p>':'')
     + block('Prompt', t.prompt)
@@ -248,6 +256,7 @@ function cardIdea(i){
     + '<h3>'+esc(i.name)+'</h3>'
     + '<p class="meta">'+esc(i.category||'')+'</p>'
     + (i.desc?'<p class="d">'+esc(i.desc)+'</p>':'')
+    + defaut(i)
     + tags(i.tags)
     + block('Code', i.code)
     + block('Prompt', i.prompt)
@@ -263,9 +272,11 @@ function cardPalette(p){
     + (p.mood?'<p class="meta">'+esc(p.mood)+'</p>':'')
     + (p.desc?'<p class="d">'+esc(p.desc)+'</p>':'')
     + '<p class="hexes">'+esc(p.colors.join('  '))+'</p>'
+    + defaut(p)
     + tags(p.tags)
     + '<div class="row">'+copyBtn(p.colors.join(', '),'Copier les hex')+copyBtn(cssVars(p),'Copier en CSS')+'</div>'
     + (p.usage?'<p class="mut">'+esc(p.usage)+'</p>':'')
+    + (p.pairs&&p.pairs.length?'<div class="pairs">'+p.pairs.map(function(x){ return aa(x[0],x[1],x[2]); }).join('')+'</div>':'')
     + '</article>';
 }
 function cssVars(p){ return ':root{\n' + p.colors.map(function(c,i){ return '  --c'+(i+1)+': '+c+';'; }).join('\n') + '\n}'; }
@@ -287,13 +298,19 @@ function cardSystem(s){
     ['Typo titres', s.headingFont], ['Typo texte', s.bodyFont], ['Échelle', s.scale],
     ['Rayons', s.radius], ['Espacement', s.spacing], ['Ombres', s.shadow], ['Motion', s.motion]
   ].filter(function(r){return r[1]}).map(function(r){ return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'; }).join('');
+  var md = DesignMD.fromSystem(s), T = DesignMD.parse(md).tokens;
+  var pairs = DesignMD.pairs(T).map(function(p){ return aa(p.fg, p.bg, p.name); }).join('');
   return '<article class="card">'
     + (dots?'<div class="dots">'+dots+'</div>':'')
     + '<h3>'+esc(s.name)+'</h3>'
     + (s.mood?'<p class="meta">'+esc(s.mood)+'</p>':'')
     + (s.desc?'<p class="d">'+esc(s.desc)+'</p>':'')
+    + defaut(s)
     + (rows?'<table class="kv">'+rows+'</table>':'')
+    + (pairs?'<div class="pairs">'+pairs+'</div>':'')
     + tags(s.tags)
+    + '<div class="row">'+copyBtn(md,'Copier en DESIGN.md')+'</div>'
+    + block('DESIGN.md', md)
     + block('Prompt système', s.prompt)
     + block('Tokens CSS', s.css)
     + block('Règles', s.rules)
@@ -501,6 +518,7 @@ document.getElementById('q').addEventListener('input', function(e){ state.q = e.
 document.addEventListener('keydown', function(e){
   if (e.key === '/' && document.activeElement.id !== 'q') { e.preventDefault(); document.getElementById('q').focus(); }
   if (e.key === 'Escape' && document.activeElement.id === 'q') { document.activeElement.blur(); }
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('.tile[data-sel]')) { e.preventDefault(); e.target.click(); }
 });
 var skipHash = false;
 window.addEventListener('hashchange', function(){
